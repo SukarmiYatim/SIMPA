@@ -10,8 +10,10 @@
    Dua kolom: [sidebar tetap] [area utama fleksibel]                 */
 .app {
   display: grid;
-  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
-  min-height: 100vh;
+  grid-template-columns: 305px minmax(0, 1fr);
+  width: 1440px;
+  min-height: 1024px;
+  margin: auto;
 }
 
 .app__main {
@@ -33,13 +35,18 @@
   display: none;
 }
 
+.app--menu-toggled .content {
+  margin-left: 106px;
+  margin-right: auto;
+}
+
 /* ---------- SIDEBAR ---------- */
 .sidebar {
   position: sticky;
   top: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 1024px;
   color: #fff;
   background: var(--navy);
 }
@@ -54,16 +61,19 @@
 .brand__logo {
   display: grid;
   place-items: center;
-  width: 3rem;
-  height: 3rem;
-  color: var(--navy);
+  width: 5rem;
+  height: 4rem;
+  flex-shrink: 0;
+  color: #000;
   background: #fff;
   border-radius: var(--radius-sm);
 }
 
 .brand__logo .icon {
-  width: 2rem;
-  height: 2rem;
+  width: 12rem;
+  height: 4rem;
+  color: #000;
+  stroke: #000;
 }
 
 .brand__text {
@@ -73,13 +83,13 @@
 }
 
 .brand__name {
-  font-size: var(--fs-lg);
+  font-size: 32px;               /* SIPMA */
   font-weight: var(--fw-bold);
   letter-spacing: 0.04em;
 }
 
 .brand__sub {
-  font-size: var(--fs-xs);
+  font-size: 20px;               /* Sistem Informasi / Dosen PA / Mahasiswa */
   opacity: 0.85;
 }
 
@@ -108,12 +118,12 @@
 }
 
 .sidebar__link .icon {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 50px;
+  height: 50px;
 }
 
 .sidebar__link:hover {
-  background: var(--navy-hover);
+  background: var(--navy-);
 }
 
 .sidebar__link--active,
@@ -130,7 +140,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(- -space-4);
   padding: var(--space-3) var(--space-5);
   background: var(--bg-page);
   border-bottom: 1px solid var(--line);
@@ -151,8 +161,8 @@
 }
 
 .topbar__toggle .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 50px;
+  height: 50px;
 }
 
 .topbar__user {
@@ -165,16 +175,18 @@
   display: flex;
   flex-direction: column;
   line-height: var(--lh-tight);
-  text-align: right;
+  text-align: left;
 }
 
 .topbar__name {
-  font-size: var(--fs-sm);
+  font-size: 20px;
   font-weight: var(--fw-semibold);
 }
 
 .topbar__role {
-  font-size: var(--fs-xs);
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
   color: var(--muted);
 }
 
@@ -185,6 +197,8 @@
   flex: 1;
   gap: var(--space-5);
   padding: var(--space-5);
+  width: 100%;
+  max-width: 1135px; /* 1440 (lebar halaman) - 305 (sidebar) */
 }
 
 .page-header {
