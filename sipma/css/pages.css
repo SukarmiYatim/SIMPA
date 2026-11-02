@@ -1,0 +1,784 @@
+/* =====================================================================
+   pages.css — BAGIAN KHUSUS HALAMAN TERTENTU
+   Hanya berisi hal yang tidak dipakai ulang di banyak tempat:
+   login, donut, grafik garis, langkah proses, timeline,
+   area upload, pratinjau dokumen, profil, form tindak lanjut.
+   ===================================================================== */
+
+/* ---------- LOGIN ---------- */
+.login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--surface);
+}
+
+.login__bar {
+  color: #fff;
+  background: var(--navy);
+}
+
+.login__bar .brand {
+  width: fit-content;
+}
+
+.login__main {
+  display: grid;
+  flex: 1;
+  place-items: center;
+  padding: var(--space-5) var(--space-4);
+}
+
+.login__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: min(100%, 31rem);
+  padding: var(--space-6);
+  background: var(--bg-page);
+  border-radius: var(--radius-lg);
+}
+
+.login__logo {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: #fff;
+  background: var(--navy);
+  border-radius: var(--radius-md);
+}
+
+.login__logo .icon {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.login__intro {
+  text-align: center;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.login__note {
+  font-size: var(--fs-xs);
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Pilihan peran: radio button yang tampil sebagai tombol segmen */
+.role-picker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  width: 100%;
+  padding: 0;
+  border: 0;
+}
+
+.role-picker__input {
+  position: absolute;
+  opacity: 0;
+}
+
+.role-picker__label {
+  padding: var(--space-2) var(--space-3);
+  font-weight: var(--fw-semibold);
+  text-align: center;
+  cursor: pointer;
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+}
+
+.role-picker__input:checked + .role-picker__label {
+  color: #fff;
+  background: var(--blue-primary);
+}
+
+.role-picker__input:focus-visible + .role-picker__label {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ---------- AUTENTIKASI: Lupa Password, Daftar, Reset ---------- */
+.login__card--lg {
+  width: min(100%, 33rem);
+}
+
+.auth-link {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  color: var(--blue-primary);
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-link--end {
+  align-self: flex-end; /* rata kanan, tepat di bawah kolom password */
+}
+
+.auth-switch {
+  font-size: var(--fs-xs);
+  text-align: center;
+}
+
+.login__back {
+  align-self: center;
+}
+
+/* Admin tidak punya Lupa Password / Daftar: disembunyikan saat radio Admin terpilih */
+.login:has(#peran-admin:checked) .auth-only {
+  display: none;
+}
+
+/* Tombol mata: tersembunyi = mata bergaris, terlihat = mata tanpa garis */
+.eye .eye__show {
+  display: none;
+}
+
+.eye[aria-pressed="true"] .eye__show {
+  display: block;
+}
+
+.eye[aria-pressed="true"] .eye__hide {
+  display: none;
+}
+
+/* ---------- DONUT (distribusi risiko) ---------- */
+.distribution {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.donut {
+  /* --s1 = akhir segmen Rendah, --s2 = akhir segmen Sedang (diisi di HTML) */
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 9.5rem;
+  height: 9.5rem;
+  background: conic-gradient(
+    var(--risk-low) 0 var(--s1),
+    var(--risk-mid) 0 var(--s2),
+    var(--risk-high) 0
+  );
+  border-radius: 50%;
+}
+
+.donut__hole {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 6.5rem;
+  height: 6.5rem;
+  line-height: var(--lh-tight);
+  background: var(--surface);
+  border-radius: 50%;
+}
+
+.donut__total {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+}
+
+/* ---------- GRAFIK GARIS (SVG) ---------- */
+.chart {
+  width: 100%;
+  height: auto;
+}
+
+.chart__grid { stroke: var(--line); stroke-width: 1; }
+.chart__axis-text { font-size: 11px; fill: var(--muted); }
+.chart__line { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
+.chart__line--low { stroke: var(--risk-low); }
+.chart__line--mid { stroke: var(--risk-mid); }
+.chart__line--high { stroke: var(--risk-high); }
+.chart__point--low { fill: var(--risk-low); }
+.chart__point--mid { fill: var(--risk-mid); }
+.chart__point--high { fill: var(--risk-high); }
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: var(--fs-xs);
+}
+
+.chart-legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ---------- LANGKAH PROSES (halaman verifikasi) ---------- */
+.step__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.step__num {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  color: var(--blue-primary);
+  background: #cfe0fb;
+  border-radius: 50%;
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  padding: 0;
+  border: 0;
+}
+
+.check-grid__legend {
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+/* ---------- KOTAK RINGKASAN DI MODAL VERIFIKASI ---------- */
+.person {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.person__name {
+  font-weight: var(--fw-semibold);
+}
+
+.mini-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.mini-stat {
+  padding: var(--space-3);
+  background: var(--surface-tint);
+  border-radius: var(--radius-md);
+}
+
+.mini-stat__label {
+  font-weight: var(--fw-bold);
+}
+
+.mini-stat__value {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+.notice {
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-tint);
+  border-radius: var(--radius-md);
+}
+
+.notice__title {
+  font-weight: var(--fw-bold);
+}
+
+/* ---------- PRATINJAU DOKUMEN KHS (modal admin) ---------- */
+.file-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-tint);
+  border-radius: var(--radius-md);
+}
+
+.doc-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: #f4f7fb;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.doc-preview__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+}
+
+.doc-preview__page {
+  padding: var(--space-4);
+  font-size: var(--fs-xs);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.doc-preview__heading {
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
+/* ---------- UPLOAD KHS (mahasiswa) ---------- */
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  background: var(--surface-tint);
+  border: 2px dashed #9db8e6;
+  border-radius: var(--radius-lg);
+}
+
+.dropzone .icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--blue-primary);
+}
+
+.dropzone__input {
+  position: absolute;
+  opacity: 0;
+}
+
+.dropzone__name {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+/* ---------- TIMELINE (riwayat catatan pembinaan) ---------- */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-left: var(--space-5);
+}
+
+.timeline::before {
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.4375rem;
+  width: 2px;
+  content: "";
+  background: var(--line);
+}
+
+.timeline__item {
+  position: relative;
+}
+
+.timeline__item::before {
+  position: absolute;
+  top: 0.35rem;
+  left: calc(var(--space-5) * -1);
+  width: 0.9375rem;
+  height: 0.9375rem;
+  content: "";
+  background: var(--navy);
+  border-radius: 50%;
+}
+
+.timeline__date {
+  display: block;
+  font-weight: var(--fw-semibold);
+}
+
+/* ---------- PROFIL ---------- */
+.profile {
+  display: grid;
+  grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.profile__photo {
+  align-items: center;
+  text-align: center;
+}
+
+/* ---------- FORM TINDAK LANJUT (dosen) ---------- */
+.followup {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.schedule {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.schedule__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  color: var(--blue-primary);
+  background: #cfe0fb;
+  border-radius: var(--radius-md);
+}
+
+.schedule__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-weight: var(--fw-semibold);
+}
+
+.day-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+  padding: 0;
+  border: 0;
+}
+
+.time-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* ---------- RESPONSIF KHUSUS HALAMAN ---------- */
+@media (width <= 56.25em) {
+  .profile,
+  .followup {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .form-grid,
+  .check-grid,
+  .mini-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .prob__row {
+    grid-template-columns: 1rem 4rem minmax(0, 1fr) 3rem;
+    gap: var(--space-2);
+  }
+
+  .info-list__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+/* Elemen yang didorong ke sisi kanan baris (badge status di samping nama) */
+.person__aside {
+  margin-left: auto;
+}
+
+/* ---------- KONTEN DAFTAR AKUN ---------- */
+
+.auth-register .login__card--register {
+  gap: var(--space-4);
+  background: var(--bg-page);
+  border-radius: var(--radius-lg);
+}
+
+.auth-register .auth-logo {
+  display: grid;
+  place-items: center;
+}
+
+/* LOGO DAFTAR AKUN */
+.auth-register .auth-logo {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto;
+  color: #20343a;
+}
+
+.auth-register .auth-logo svg {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  fill: #20343a;
+  stroke: #20343a;
+  stroke-width: 1.2;
+}
+
+.auth-register .auth-heading {
+  text-align: center;
+}
+
+.auth-register .auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+
+/* ---------- HALAMAN RESET PASSWORD ---------- */
+
+.reset-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #eef5ff;
+}
+
+.reset-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.reset-card {
+  width: min(100%, 545px);
+  padding: 12px 38px 20px;
+  background: #eef5ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.reset-icon {
+  width: 48px;
+  height: 48px;
+  color: #222;
+}
+
+.reset-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.reset-heading {
+  text-align: center;
+}
+
+.reset-heading h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+  color: #111;
+}
+
+.reset-heading p {
+  margin: 2px 0 12px;
+  font-size: 17px;
+  color: #111;
+}
+
+.reset-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reset-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reset-form .field__label {
+  font-size: 18px;
+  color: #111;
+}
+
+.reset-form .input {
+  width: 100%;
+  height: 38px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.reset-button {
+  margin-top: 28px;
+  border-radius: 20px;
+  background: #2861ed;
+  color: #fff;
+}
+
+.reset-back {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 9px 27px;
+  border-radius: 22px;
+  background: #c9c9ce;
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reset-back:hover {
+  background: #b5b5bb;
+}
+
+@media (max-width: 600px) {
+  .reset-card {
+    padding: 20px;
+  }
+
+  .reset-heading p {
+    font-size: 14px;
+  }
+}
+
+
+/* ---------- POP-UP RESET PASSWORD ---------- */
+
+.reset-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 16.7vh 16px 20px;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.reset-overlay[hidden] {
+  display: none;
+}
+
+.reset-modal {
+  width: min(545px, 100%);
+  padding: 10px 38px 18px;
+  background: #eef5ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.reset-modal__icon {
+  width: 48px;
+  height: 48px;
+  color: #222;
+}
+
+.reset-modal__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.reset-modal__heading {
+  text-align: center;
+}
+
+.reset-modal__heading h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+  color: #111;
+}
+
+.reset-modal__heading p {
+  margin: 2px 0 12px;
+  font-size: 17px;
+  color: #111;
+}
+
+.reset-modal__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reset-modal__form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reset-modal__form .field__label {
+  font-size: 18px;
+  color: #111;
+}
+
+.reset-modal__form .input {
+  width: 100%;
+  height: 38px;
+  border: none;
+  border-radius: 18px;
+  background: white;
+  padding: 8px 14px;
+}
+
+.reset-modal__submit {
+  width: 100%;
+  height: 34px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 20px;
+  background: #2861ed;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reset-modal__back {
+  margin-top: 16px;
+  padding: 9px 27px;
+  border: none;
+  border-radius: 22px;
+  background: #c9c9ce;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .reset-overlay {
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+  }
+
+  .reset-modal {
+    padding: 20px;
+  }
+
+  .reset-modal__heading p {
+    font-size: 14px;
+  }
+}
+
+

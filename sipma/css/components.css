@@ -1,0 +1,722 @@
+/* =====================================================================
+   components.css — KOMPONEN YANG DIPAKAI ULANG
+   Penamaan: BEM  →  .blok  .blok__elemen  .blok--varian
+   Isi: card, stat, badge, button, form, table, pagination, tabs,
+        feed, legend, avatar, progress (prob), modal, toast
+   Setiap komponen dipakai di banyak halaman, sehingga tidak ada
+   duplikasi CSS antar role.
+   ===================================================================== */
+
+/* ---------- CARD ---------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.card--tint {
+  background: var(--surface-tint);
+  box-shadow: none;
+}
+
+.card__title {
+  font-size: var(--fs-lg);
+}
+
+.card__desc {
+  margin-top: calc(var(--space-2) * -1);
+  color: var(--muted);
+}
+
+/* ---------- STAT (kartu angka ringkasan) ---------- */
+.stat {
+  --tone: var(--blue);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.stat--low { --tone: var(--risk-low); }
+.stat--mid { --tone: var(--risk-mid); }
+.stat--high { --tone: var(--risk-high); }
+
+.stat__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.stat__label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+}
+
+.stat__head .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--tone);
+}
+
+.stat__value {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__sub {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+/* ---------- BADGE (label status) ---------- */
+.badge {
+  display: inline-block;
+  padding: 0.125rem 0.625rem;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  line-height: 1.5;
+  white-space: nowrap;
+  border-radius: 999px;
+}
+
+.badge--low { color: var(--risk-low-ink); background: var(--risk-low-soft); }
+.badge--mid { color: var(--risk-mid-ink); background: var(--risk-mid-soft); }
+.badge--high { color: var(--risk-high-ink); background: var(--risk-high-soft); }
+.badge--ok { color: var(--risk-low-ink); background: var(--risk-low-soft); }
+.badge--pending { color: var(--risk-high-ink); background: var(--risk-high-soft); }
+.badge--final { color: #fff; background: #15803d; }
+
+/* ---------- BUTTON ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.5rem;
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  color: #fff;
+  background: var(--blue-primary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s;
+}
+
+.btn:hover {
+  background: var(--blue-primary-hover);
+}
+
+.btn--secondary {
+  color: var(--ink);
+  background: var(--gray-btn);
+}
+
+.btn--secondary:hover {
+  background: #a3abb7;
+}
+
+.btn--outline {
+  color: var(--blue-primary);
+  background: var(--surface);
+  border-color: var(--blue-primary);
+}
+
+.btn--outline:hover {
+  background: var(--surface-tint);
+}
+
+.btn--sm {
+  min-height: 2rem;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--fs-xs);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Tombol ikon (edit / hapus / lihat) di kolom Aksi tabel */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--ink);
+  background: #e5e9f0;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.icon-btn:hover { background: #d3d9e3; }
+.icon-btn--edit { color: #fff; background: #0891b2; }
+.icon-btn--edit:hover { background: #0e7490; }
+
+.actions {
+  display: inline-flex;
+  gap: var(--space-2);
+}
+
+/* Link teks kecil (mis. "Tinjau", "Lihat") */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-weight: var(--fw-semibold);
+  color: var(--blue);
+}
+
+.link:hover { text-decoration: underline; }
+
+/* ---------- FORM ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.field__label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.field__req {
+  color: var(--risk-high);
+}
+
+.field__hint {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.field__counter {
+  align-self: flex-end;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: var(--space-2) var(--space-3);
+  background: #f2f6fd;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.input:read-only {
+  color: var(--muted);
+}
+
+.textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+/* Input dengan ikon di kiri (login, pencarian) */
+.input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon > .icon {
+  position: absolute;
+  left: var(--space-3);
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.input-icon > .input {
+  padding-left: 2.5rem;
+}
+
+.input-icon__btn {
+  position: absolute;
+  right: var(--space-2);
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: 0;
+}
+
+.input-icon__btn .icon {
+  position: static;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.search {
+  flex: 1 1 16rem;
+  max-width: 24rem;
+}
+
+.search .input {
+  background: var(--surface);
+}
+
+.select-wrap {
+  flex: 0 1 11rem;
+}
+
+.select {
+  background-color: var(--surface);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.check__input {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--blue-primary);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+/* ---------- TABLE ---------- */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.table {
+  min-width: 36rem; /* di layar sempit tabel di-scroll horizontal, bukan diperas */
+  font-variant-numeric: tabular-nums;
+}
+
+.table th,
+.table td {
+  padding: var(--space-3);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+}
+
+.table th {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  background: #f5f8fd;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table tbody tr:hover {
+  background: #f8fbff;
+}
+
+.table .cell-center {
+  text-align: center;
+}
+
+.table-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* ---------- PAGINATION ---------- */
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.pagination__link,
+.pagination__gap {
+  display: grid;
+  place-items: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.pagination__link:hover {
+  background: var(--surface-tint);
+}
+
+.pagination__link--active,
+.pagination__link--active:hover {
+  font-weight: var(--fw-semibold);
+  color: #fff;
+  background: var(--blue-primary);
+}
+
+/* ---------- TABS ---------- */
+.tabs__list {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+}
+
+.tabs__tab {
+  flex: 1;
+  padding: var(--space-3);
+  font-weight: var(--fw-semibold);
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+}
+
+.tabs__tab[aria-selected="true"] {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+.tabs__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+}
+
+/* ---------- AVATAR ---------- */
+.avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  color: var(--ink);
+}
+
+.avatar .icon {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5;
+}
+
+.avatar--xl {
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+/* ---------- FEED (daftar aktivitas / catatan terbaru) ---------- */
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.feed__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.feed__icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.feed__title {
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+}
+
+.feed__time,
+.feed__text {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+/* ---------- LEGEND & SUMMARY (keterangan warna risiko) ---------- */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dot {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  background: var(--tone);
+  border-radius: 50%;
+}
+
+.dot--low { --tone: var(--risk-low); }
+.dot--mid { --tone: var(--risk-mid); }
+.dot--high { --tone: var(--risk-high); }
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.summary__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+}
+
+.summary__row dd {
+  margin-left: auto;
+  font-weight: var(--fw-semibold);
+}
+
+/* ---------- PROB (probabilitas tiap kelas: bar horizontal) ---------- */
+.prob {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.prob__row {
+  display: grid;
+  grid-template-columns: 1rem 4.5rem minmax(0, 1fr) 3.5rem;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.prob__bar {
+  --tone: var(--risk-low);
+
+  height: 1.125rem;
+  overflow: hidden;
+  background: #e9eef6;
+  border-radius: 999px;
+}
+
+.prob__bar::after {
+  display: block;
+  width: var(--value); /* nilai diisi dari atribut style="--value: 70.4%" */
+  height: 100%;
+  content: "";
+  background: var(--tone);
+  border-radius: 999px;
+}
+
+.prob__bar--mid { --tone: var(--risk-mid); }
+.prob__bar--high { --tone: var(--risk-high); }
+
+.prob__value {
+  font-size: var(--fs-xs);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- RESULT (hasil klasifikasi risiko) ---------- */
+.result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--surface-tint);
+  border-radius: var(--radius-lg);
+}
+
+.result__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  color: #15803d;
+  background: #bfdbfe;
+  border-radius: 50%;
+}
+
+.result__icon .icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.result__body {
+  flex: 1;
+}
+
+.result__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+/* ---------- INFO LIST (pasangan label : nilai) ---------- */
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.info-list__row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+}
+
+.info-list__row dt {
+  font-weight: var(--fw-medium);
+}
+
+/* ---------- MODAL (elemen <dialog> bawaan HTML) ---------- */
+.modal {
+  margin: auto; /* reset global margin:0 menghilangkan posisi tengah bawaan <dialog> */
+  width: min(30rem, calc(100% - 2rem));
+  max-height: calc(100vh - 2rem);
+  padding: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgb(15 42 71 / 35%);
+}
+
+.modal::backdrop {
+  background: rgb(15 42 71 / 55%);
+}
+
+.modal--lg {
+  width: min(44rem, calc(100% - 2rem));
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 2rem);
+}
+
+.modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-5) 0;
+}
+
+.modal__title {
+  font-size: var(--fs-lg);
+}
+
+.modal__desc {
+  margin-top: var(--space-1);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.modal__close {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.modal__close:hover {
+  background: var(--surface-tint);
+}
+
+.modal__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  overflow-y: auto;
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: 0 var(--space-5) var(--space-5);
+}
+
+/* Modal konfirmasi hapus: konten rata tengah */
+.modal--confirm .modal__body {
+  align-items: center;
+  text-align: center;
+}
+
+.modal--confirm .modal__footer {
+  justify-content: center;
+}
+
+.modal__alert-icon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--risk-high);
+  background: var(--risk-high-soft);
+  border-radius: 50%;
+}
+
+/* ---------- TOAST (notifikasi singkat setelah simpan) ---------- */
+.toast {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: 200;
+  padding: var(--space-3) var(--space-5);
+  font-weight: var(--fw-semibold);
+  color: #fff;
+  background: var(--navy);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgb(15 42 71 / 35%);
+}

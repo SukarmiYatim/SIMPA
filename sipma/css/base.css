@@ -1,0 +1,229 @@
+/* =====================================================================
+   base.css — FONDASI
+   Isi: (1) design tokens  (2) reset  (3) tipografi  (4) utilitas dasar
+   File ini dimuat PERTAMA. Semua file CSS lain hanya memakai variabel
+   yang didefinisikan di sini, sehingga warna/ukuran konsisten di semua
+   halaman (Admin, Dosen PA, Mahasiswa).
+   ===================================================================== */
+
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root {
+  /* Font: Inter (font bawaan Figma, dirancang khusus untuk antarmuka layar) */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Skala ukuran font (rem; 1rem = 16px) */
+  --fs-xs: 0.75rem;   /* 12px — keterangan kecil, badge, label tabel   */
+  --fs-sm: 0.875rem;  /* 14px — teks isi / body, tabel, form           */
+  --fs-md: 1rem;      /* 16px — h3, judul kartu kecil                  */
+  --fs-lg: 1.125rem;  /* 18px — h2, judul kartu / seksi                */
+  --fs-xl: 1.5rem;    /* 24px — h1, judul halaman                      */
+  --fs-2xl: 2rem;     /* 32px — angka besar pada kartu statistik       */
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.3;    /* heading */
+  --lh-base: 1.55;    /* teks isi */
+
+  /* Warna dasar */
+  --navy: #0f2a47;          /* sidebar, header login */
+  --navy-hover: #1a3d63;
+  --blue: #1473e6;          /* menu aktif, tab aktif, link */
+  --blue-primary: #2563eb;  /* tombol utama */
+  --blue-primary-hover: #1d4fd8;
+  --bg-page: #eef4fd;       /* latar area konten */
+  --surface: #ffffff;       /* kartu */
+  --surface-tint: #e6eefb;  /* kartu bernuansa biru muda */
+  --ink: #0f172a;           /* teks utama */
+  --muted: #556176;         /* teks sekunder */
+  --line: #d3dcea;          /* garis & border */
+  --gray-btn: #b8bfc9;      /* tombol Batal / Kembali */
+
+  /* Warna status risiko (dipakai konsisten di badge, donut, grafik, bar) */
+  --risk-low: #22c55e;
+  --risk-low-soft: #dcfce7;
+  --risk-low-ink: #166534;
+  --risk-mid: #facc15;
+  --risk-mid-soft: #fef3c7;
+  --risk-mid-ink: #854d0e;
+  --risk-high: #ef4444;
+  --risk-high-soft: #fee2e2;
+  --risk-high-ink: #991b1b;
+
+  /* Spasi (kelipatan 4px) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+
+  /* Bentuk & bayangan */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-card: 0 1px 2px rgb(15 42 71 / 8%), 0 2px 8px rgb(15 42 71 / 6%);
+
+  --sidebar-w: 15rem;
+}
+
+/* ---------- 2. RESET ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-base);
+  color: var(--ink);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- 3. TIPOGRAFI: hierarki heading ----------
+   h1 = judul halaman (satu per halaman)
+   h2 = judul kartu / seksi
+   h3 = sub-judul di dalam kartu                                   */
+h1,
+h2,
+h3 {
+  line-height: var(--lh-tight);
+  color: var(--ink);
+}
+
+h1 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+h3 {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+}
+
+small,
+.text-muted {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+/* ---------- 4. UTILITAS DASAR ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: var(--space-4);
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  color: #fff;
+  background: var(--blue-primary);
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* Sprite ikon SVG (disisipkan di awal tiap halaman, tidak terlihat) */
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  flex: none;
+  width: 1.25em;
+  height: 1.25em;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--lg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.icon--xl {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+[hidden] {
+  display: none !important;
+}

@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kelola Pengguna | SIPMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+      <symbol id="i-book" viewBox="0 0 24 24">
+        <path d="M12 6c-2-1.5-5-2-9-2v14c4 0 7 .5 9 2 2-1.500 5-2 9-2V4c-4 0-7 .5-9 2z" />
+        <path d="M12 6v14" />
+      </symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24">
+        <path d="m2 9 10-5 10 5-10 5z" />
+        <path d="M6 11.500V16c0 1.500 3 3 6 3s6-1.500 6-3v-4.500M22 9v6" />
+      </symbol>
+      <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6" /></symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" /></symbol>
+      <symbol id="i-clipboard-check" viewBox="0 0 24 24">
+        <rect x="5" y="4" width="14" height="17" rx="2" />
+        <path d="M9 4V3h6v1M9 13l2 2 4-4" />
+      </symbol>
+      <symbol id="i-clipboard-list" viewBox="0 0 24 24">
+        <rect x="5" y="4" width="14" height="17" rx="2" />
+        <path d="M9 4V3h6v1M9 11h6M9 15h6" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+      </symbol>
+      <symbol id="i-log-out" viewBox="0 0 24 24">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></symbol>
+      <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.800 2.800 0 0 0-4-4L4 16z" /></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.500-3.500" />
+      </symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" /></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+      </symbol>
+      <symbol id="i-user-circle" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="10" r="3.5" />
+        <path d="M5.5 19c1.5-3 4-4 6.5-4s5 1 6.5 4" />
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
+    </svg>
+    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+    <div class="app" data-app>
+      <!-- ===== SIDEBAR: navigasi utama sesuai role ===== -->
+      <aside class="sidebar" id="sidebar" aria-label="Menu utama">
+        <a class="brand" href="beranda.html">
+          <span class="brand__logo">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap" /></svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">SIPMA</span>
+            <span class="brand__sub">Sistem Informasi Pemantauan Akademik</span>
+          </span>
+        </a>
+        <nav class="sidebar__nav" aria-label="Navigasi Admin">
+          <ul class="sidebar__list">
+            <li>
+              <a class="sidebar__link" href="beranda.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-home" /></svg>
+                <span>Beranda</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link sidebar__link--active" href="kelola-pengguna.html" aria-current="page">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user" /></svg>
+                <span>Kelola Pengguna</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="data-akademik.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-book" /></svg>
+                <span>Data Akademik</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="verifikasi-klasifikasi.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard-check" /></svg>
+                <span>Proses Klasifikasi dan Verifikasi Hasil</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="rekapitulasi-risiko.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard-list" /></svg>
+                <span>Rekapitulasi Risiko</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <a class="sidebar__link sidebar__logout" href="../index.html">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-log-out" /></svg>
+          <span>Keluar</span>
+        </a>
+      </aside>
+      <div class="app__backdrop" data-sidebar-toggle></div>
+
+      <div class="app__main">
+        <!-- ===== TOPBAR: tombol menu + identitas pengguna ===== -->
+        <header class="topbar">
+          <button
+            class="topbar__toggle"
+            type="button"
+            data-sidebar-toggle
+            aria-controls="sidebar"
+            aria-expanded="true"
+            aria-label="Tampilkan atau sembunyikan menu"
+          >
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu" /></svg>
+          </button>
+          <div class="topbar__user">
+            <span class="avatar">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
+            </span>
+            <p class="topbar__identity">
+              <span class="topbar__name">Admin</span>
+              <span class="topbar__role">Program Studi Informatika</span>
+            </p>
+          </div>
+        </header>
+
+        <!-- ===== KONTEN UTAMA HALAMAN ===== -->
+        <main class="content" id="konten">
+          <header class="page-header">
+            <h1 class="page-header__title">Kelola Pengguna</h1>
+            <p class="page-header__desc">Kelola data pengguna sistem (Mahasiswa, Dosen PA, dan Admin)</p>
+          </header>
+          <form class="toolbar" data-filter="#tabel-pengguna" aria-label="Filter data pengguna">
+            <label class="input-icon search">
+              <span class="sr-only">Pencarian</span>
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-search" /></svg>
+              <input class="input" type="search" placeholder="Cari nama, NPM, atau NIDN" data-filter-text />
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter peran</span>
+              <select class="select" data-filter-key="peran">
+                <option value="">Semua Peran</option>
+                <option value="mahasiswa">Mahasiswa</option>
+                <option value="dosen-pa">Dosen PA</option>
+                <option value="admin-prodi">Admin Prodi</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter status</span>
+              <select class="select" data-filter-key="status">
+                <option value="">Semua Status</option>
+                <option value="aktif">Aktif</option>
+                <option value="nonaktif">Nonaktif</option>
+              </select>
+            </label>
+          </form>
+          <div class="table-wrap">
+            <table class="table" id="tabel-pengguna">
+              <caption class="sr-only">Daftar pengguna sistem</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="cell-center">No.</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">NPM/NIDN</th>
+                  <th scope="col">Peran</th>
+                  <th scope="col" class="cell-center">Status</th>
+                  <th scope="col" class="cell-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-peran="mahasiswa" data-status="aktif">
+                  <td class="cell-center">1</td>
+                  <td>Ahmad Rizki</td>
+                  <td>2311234567</td>
+                  <td>Mahasiswa</td>
+                  <td class="cell-center"><span class="badge badge--ok">Aktif</span></td>
+                  <td class="cell-center">
+                    <span class="actions">
+                      <button
+                        class="icon-btn icon-btn--edit"
+                        type="button"
+                        aria-label="Edit Ahmad Rizki"
+                        data-open-modal="modal-edit-pengguna"
+                        data-nama="Ahmad Rizki"
+                        data-nomor="2311234567"
+                        data-peran="mahasiswa"
+                        data-status="aktif"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                      </button>
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Hapus Ahmad Rizki"
+                        data-open-modal="modal-hapus-pengguna"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr data-peran="mahasiswa" data-status="aktif">
+                  <td class="cell-center">2</td>
+                  <td>Siti Nurhalizah</td>
+                  <td>2311234568</td>
+                  <td>Mahasiswa</td>
+                  <td class="cell-center"><span class="badge badge--ok">Aktif</span></td>
+                  <td class="cell-center">
+                    <span class="actions">
+                      <button
+                        class="icon-btn icon-btn--edit"
+                        type="button"
+                        aria-label="Edit Siti Nurhalizah"
+                        data-open-modal="modal-edit-pengguna"
+                        data-nama="Siti Nurhalizah"
+                        data-nomor="2311234568"
+                        data-peran="mahasiswa"
+                        data-status="aktif"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                      </button>
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Hapus Siti Nurhalizah"
+                        data-open-modal="modal-hapus-pengguna"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr data-peran="mahasiswa" data-status="aktif">
+                  <td class="cell-center">3</td>
+                  <td>Budi Santoro</td>
+                  <td>2311234569</td>
+                  <td>Mahasiswa</td>
+                  <td class="cell-center"><span class="badge badge--ok">Aktif</span></td>
+                  <td class="cell-center">
+                    <span class="actions">
+                      <button
+                        class="icon-btn icon-btn--edit"
+                        type="button"
+                        aria-label="Edit Budi Santoro"
+                        data-open-modal="modal-edit-pengguna"
+                        data-nama="Budi Santoro"
+                        data-nomor="2311234569"
+                        data-peran="mahasiswa"
+                        data-status="aktif"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                      </button>
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Hapus Budi Santoro"
+                        data-open-modal="modal-hapus-pengguna"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr data-peran="dosen-pa" data-status="aktif">
+                  <td class="cell-center">4</td>
+                  <td>Dr. Rina Martina, S.T., M.Kom</td>
+                  <td>19630124200112001</td>
+                  <td>Dosen PA</td>
+                  <td class="cell-center"><span class="badge badge--ok">Aktif</span></td>
+                  <td class="cell-center">
+                    <span class="actions">
+                      <button
+                        class="icon-btn icon-btn--edit"
+                        type="button"
+                        aria-label="Edit Dr. Rina Martina, S.T., M.Kom"
+                        data-open-modal="modal-edit-pengguna"
+                        data-nama="Dr. Rina Martina, S.T., M.Kom"
+                        data-nomor="19630124200112001"
+                        data-peran="dosen-pa"
+                        data-status="aktif"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                      </button>
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Hapus Dr. Rina Martina, S.T., M.Kom"
+                        data-open-modal="modal-hapus-pengguna"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr data-peran="dosen-pa" data-status="aktif">
+                  <td class="cell-center">5</td>
+                  <td>Dr. Andi Pratama, S.T., M.Kom</td>
+                  <td>19291237200010002</td>
+                  <td>Dosen PA</td>
+                  <td class="cell-center"><span class="badge badge--ok">Aktif</span></td>
+                  <td class="cell-center">
+                    <span class="actions">
+                      <button
+                        class="icon-btn icon-btn--edit"
+                        type="button"
+                        aria-label="Edit Dr. Andi Pratama, S.T., M.Kom"
+                        data-open-modal="modal-edit-pengguna"
+                        data-nama="Dr. Andi Pratama, S.T., M.Kom"
+                        data-nomor="19291237200010002"
+                        data-peran="dosen-pa"
+                        data-status="aktif"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                      </button>
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Hapus Dr. Andi Pratama, S.T., M.Kom"
+                        data-open-modal="modal-hapus-pengguna"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr data-peran="admin-prodi" data-status="aktif">
+                  <td class="cell-center">6</td>
+                  <td>Admin Prodi</td>
+                  <td>1920001201012001</td>
+                  <td>Admin Prodi</td>
+                  <td class="cell-center"><span class="badge badge--ok">Aktif</span></td>
+                  <td class="cell-center">
+                    <span class="actions">
+                      <button
+                        class="icon-btn icon-btn--edit"
+                        type="button"
+                        aria-label="Edit Admin Prodi"
+                        data-open-modal="modal-edit-pengguna"
+                        data-nama="Admin Prodi"
+                        data-nomor="1920001201012001"
+                        data-peran="admin-prodi"
+                        data-status="aktif"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                      </button>
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Hapus Admin Prodi"
+                        data-open-modal="modal-hapus-pengguna"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr data-peran="mahasiswa" data-status="aktif">
+                  <td class="cell-center">7</td>
+                  <td>Fajar Nugroho</td>
+                  <td>2311234572</td>
+                  <td>Mahasiswa</td>
+                  <td class="cell-center"><span class="badge badge--ok">Aktif</span></td>
+                  <td class="cell-center">
+                    <span class="actions">
+                      <button
+                        class="icon-btn icon-btn--edit"
+                        type="button"
+                        aria-label="Edit Fajar Nugroho"
+                        data-open-modal="modal-edit-pengguna"
+                        data-nama="Fajar Nugroho"
+                        data-nomor="2311234572"
+                        data-peran="mahasiswa"
+                        data-status="aktif"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                      </button>
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Hapus Fajar Nugroho"
+                        data-open-modal="modal-hapus-pengguna"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+                <tr data-peran="mahasiswa" data-status="aktif">
+                  <td class="cell-center">8</td>
+                  <td>Dewi Aulia</td>
+                  <td>2311234573</td>
+                  <td>Mahasiswa</td>
+                  <td class="cell-center"><span class="badge badge--ok">Aktif</span></td>
+                  <td class="cell-center">
+                    <span class="actions">
+                      <button
+                        class="icon-btn icon-btn--edit"
+                        type="button"
+                        aria-label="Edit Dewi Aulia"
+                        data-open-modal="modal-edit-pengguna"
+                        data-nama="Dewi Aulia"
+                        data-nomor="2311234573"
+                        data-peran="mahasiswa"
+                        data-status="aktif"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                      </button>
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Hapus Dewi Aulia"
+                        data-open-modal="modal-hapus-pengguna"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <nav class="pagination" aria-label="Navigasi halaman tabel">
+            <ul class="pagination__list">
+              <li>
+                <a class="pagination__link" href="#" aria-label="Halaman sebelumnya">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-left" /></svg>
+                </a>
+              </li>
+              <li><a class="pagination__link pagination__link--active" href="#" aria-current="page">1</a></li>
+              <li><a class="pagination__link" href="#">2</a></li>
+              <li><span class="pagination__gap" aria-hidden="true">…</span></li>
+              <li>
+                <a class="pagination__link" href="#" aria-label="Halaman berikutnya">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-right" /></svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </main>
+      </div>
+    </div>
+
+    <!-- ===== MODAL / POP-UP ===== -->
+    <dialog
+      class="modal"
+      id="modal-edit-pengguna"
+      aria-labelledby="modal-edit-pengguna-judul"
+      data-toast="Data pengguna berhasil diperbarui"
+    >
+      <form class="modal__form" method="dialog">
+        <header class="modal__header">
+          <div>
+            <h2 class="modal__title" id="modal-edit-pengguna-judul">Edit Pengguna</h2>
+            <p class="modal__desc">Perbarui informasi pengguna SIPMA</p>
+          </div>
+          <button class="modal__close" type="submit" value="cancel" formnovalidate aria-label="Tutup">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x" /></svg>
+          </button>
+        </header>
+        <div class="modal__body">
+          <div class="field">
+            <label class="field__label" for="edit-nama">
+              Nama Lengkap
+              <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <input class="input" id="edit-nama" name="edit-nama" type="text" required data-bind="nama" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="edit-nomor">
+              NPM/NIDN
+              <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <input class="input" id="edit-nomor" name="edit-nomor" type="text" required data-bind="nomor" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="edit-peran">Peran</label>
+            <select class="select" id="edit-peran" name="edit-peran" data-bind="peran">
+              <option value="mahasiswa">Mahasiswa</option>
+              <option value="dosen-pa">Dosen PA</option>
+              <option value="admin-prodi">Admin Prodi</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="edit-status">Status</label>
+            <select class="select" id="edit-status" name="edit-status" data-bind="status">
+              <option value="aktif">Aktif</option>
+              <option value="nonaktif">Nonaktif</option>
+            </select>
+          </div>
+        </div>
+        <footer class="modal__footer">
+          <button class="btn btn--secondary" type="submit" value="cancel" formnovalidate>Batal</button>
+          <button class="btn" type="submit" value="ok">Simpan Perubahan</button>
+        </footer>
+      </form>
+    </dialog>
+    <dialog
+      class="modal modal--confirm"
+      id="modal-hapus-pengguna"
+      aria-labelledby="modal-hapus-pengguna-judul"
+      data-toast="Pengguna berhasil dihapus"
+    >
+      <form class="modal__form" method="dialog">
+        <header class="modal__header">
+          <div>
+            <h2 class="modal__title sr-only" id="modal-hapus-pengguna-judul">Hapus Pengguna?</h2>
+          </div>
+          <button class="modal__close" type="submit" value="cancel" formnovalidate aria-label="Tutup">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x" /></svg>
+          </button>
+        </header>
+        <div class="modal__body">
+          <span class="modal__alert-icon">
+            <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="#i-trash" /></svg>
+          </span>
+          <p><strong>Hapus Pengguna?</strong></p>
+          <p>Yakin ingin menghapus akun pengguna ini?</p>
+        </div>
+        <footer class="modal__footer">
+          <button class="btn btn--secondary" type="submit" value="cancel" formnovalidate>Batal</button>
+          <button class="btn" type="submit" value="ok">Hapus</button>
+        </footer>
+      </form>
+    </dialog>
+    <script src="../js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Akademik | SIPMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+      <symbol id="i-bar-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M9 17v-6M14 17V8M19 17v-9" /></symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24">
+        <path d="m2 9 10-5 10 5-10 5z" />
+        <path d="M6 11.500V16c0 1.500 3 3 6 3s6-1.500 6-3v-4.500M22 9v6" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+      </symbol>
+      <symbol id="i-log-out" viewBox="0 0 24 24">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></symbol>
+      <symbol id="i-message" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4z" /></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24">
+        <path d="M7 18a5 5 0 0 1-.5-10A6 6 0 0 1 18 9a4.500 4.500 0 0 1-1 9M12 12v8M9 15l3-3 3 3" />
+      </symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+      </symbol>
+      <symbol id="i-user-circle" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="10" r="3.5" />
+        <path d="M5.5 19c1.5-3 4-4 6.5-4s5 1 6.5 4" />
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="3.5" />
+        <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+        <path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.5.7 4 2.5 4 5.5" />
+      </symbol>
+    </svg>
+    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+    <div class="app" data-app>
+      <!-- ===== SIDEBAR: navigasi utama sesuai role ===== -->
+      <aside class="sidebar" id="sidebar" aria-label="Menu utama">
+        <a class="brand" href="beranda.html">
+          <span class="brand__logo">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap" /></svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">SIPMA</span>
+            <span class="brand__sub">Mahasiswa</span>
+          </span>
+        </a>
+        <nav class="sidebar__nav" aria-label="Navigasi Ahmad Rizky">
+          <ul class="sidebar__list">
+            <li>
+              <a class="sidebar__link" href="beranda.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-home" /></svg>
+                <span>Beranda</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link sidebar__link--active" href="data-akademik.html" aria-current="page">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users" /></svg>
+                <span>Data Akademik</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="status-risiko.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bar-chart" /></svg>
+                <span>Status Risiko</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="tindak-lanjut.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-message" /></svg>
+                <span>Tindak Lanjut</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="profil.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user" /></svg>
+                <span>Profil</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <a class="sidebar__link sidebar__logout" href="../index.html">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-log-out" /></svg>
+          <span>Keluar</span>
+        </a>
+      </aside>
+      <div class="app__backdrop" data-sidebar-toggle></div>
+
+      <div class="app__main">
+        <!-- ===== TOPBAR: tombol menu + identitas pengguna ===== -->
+        <header class="topbar">
+          <button
+            class="topbar__toggle"
+            type="button"
+            data-sidebar-toggle
+            aria-controls="sidebar"
+            aria-expanded="true"
+            aria-label="Tampilkan atau sembunyikan menu"
+          >
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu" /></svg>
+          </button>
+          <div class="topbar__user">
+            <span class="avatar">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
+            </span>
+            <p class="topbar__identity">
+              <span class="topbar__name">Ahmad Rizky</span>
+              <span class="topbar__role">NIM 231234567</span>
+            </p>
+          </div>
+        </header>
+
+        <!-- ===== KONTEN UTAMA HALAMAN ===== -->
+        <main class="content" id="konten">
+          <header class="page-header">
+            <h1 class="page-header__title">Data Akademik</h1>
+            <p class="page-header__desc">Berikut adalah riwayat akademik per semester</p>
+          </header>
+          <div class="card">
+            <div class="tabs" data-tabs>
+              <div class="tabs__list" role="tablist" aria-label="Menu data akademik">
+                <button
+                  class="tabs__tab"
+                  type="button"
+                  role="tab"
+                  id="tab-riwayat"
+                  aria-controls="panel-riwayat"
+                  aria-selected="true"
+                >
+                  Riwayat Akademik
+                </button>
+                <button
+                  class="tabs__tab"
+                  type="button"
+                  role="tab"
+                  id="tab-upload"
+                  aria-controls="panel-upload"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  Upload KHS
+                </button>
+              </div>
+              <section class="tabs__panel" role="tabpanel" id="panel-riwayat" aria-labelledby="tab-riwayat">
+                <h2 class="card__title">Data akademik saya</h2>
+                <div class="table-wrap">
+                  <table class="table">
+                    <caption class="sr-only">Riwayat akademik per semester</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col" class="cell-center">Semester</th>
+                        <th scope="col" class="cell-center">IPK</th>
+                        <th scope="col" class="cell-center">IPS</th>
+                        <th scope="col" class="cell-center">SKS Lulus</th>
+                        <th scope="col" class="cell-center">Mata Kuliah Mengulang</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="cell-center">1</td>
+                        <td class="cell-center">3.00</td>
+                        <td class="cell-center">3.20</td>
+                        <td class="cell-center">20</td>
+                        <td class="cell-center">0</td>
+                      </tr>
+                      <tr>
+                        <td class="cell-center">2</td>
+                        <td class="cell-center">3.10</td>
+                        <td class="cell-center">3.30</td>
+                        <td class="cell-center">40</td>
+                        <td class="cell-center">0</td>
+                      </tr>
+                      <tr>
+                        <td class="cell-center">3</td>
+                        <td class="cell-center">3.15</td>
+                        <td class="cell-center">2.40</td>
+                        <td class="cell-center">60</td>
+                        <td class="cell-center">1</td>
+                      </tr>
+                      <tr>
+                        <td class="cell-center">4</td>
+                        <td class="cell-center">3.20</td>
+                        <td class="cell-center">3.45</td>
+                        <td class="cell-center">72</td>
+                        <td class="cell-center">1</td>
+                      </tr>
+                      <tr>
+                        <td class="cell-center">5</td>
+                        <td class="cell-center">3.18</td>
+                        <td class="cell-center">3.40</td>
+                        <td class="cell-center">84</td>
+                        <td class="cell-center">2</td>
+                      </tr>
+                      <tr>
+                        <td class="cell-center">6</td>
+                        <td class="cell-center">3.12</td>
+                        <td class="cell-center">3.50</td>
+                        <td class="cell-center">96</td>
+                        <td class="cell-center">2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+              <section class="tabs__panel" role="tabpanel" id="panel-upload" aria-labelledby="tab-upload" hidden>
+                <h2 class="card__title">Upload Akademik</h2>
+                <p class="text-muted">Silakan unggah file KHS anda untuk divalidasi oleh admin program studi</p>
+                <div class="dropzone">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-upload" /></svg>
+                  <p><strong>Pilih file KHS</strong></p>
+                  <p class="text-muted">Format file PDF (Maks 2 MB)</p>
+                  <label class="btn btn--outline btn--sm">
+                    <input class="dropzone__input" type="file" accept="application/pdf" data-file-name="nama-file" />
+                    Pilih File
+                  </label>
+                  <p class="dropzone__name" id="nama-file" aria-live="polite"></p>
+                </div>
+                <div class="table-wrap">
+                  <table class="table">
+                    <caption class="sr-only">Riwayat unggahan KHS</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col" class="cell-center">No</th>
+                        <th scope="col">Semester</th>
+                        <th scope="col">Nama File</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col" class="cell-center">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="cell-center">1</td>
+                        <td>Genap 2025/2026</td>
+                        <td>KHS - Genap 2026.pdf</td>
+                        <td>15 Jan 2026</td>
+                        <td class="cell-center"><span class="badge badge--ok">Terverifikasi</span></td>
+                      </tr>
+                      <tr>
+                        <td class="cell-center">2</td>
+                        <td>Ganjil 2025/2026</td>
+                        <td>KHS - Ganjil 2025.pdf</td>
+                        <td>10 Sep 2025</td>
+                        <td class="cell-center"><span class="badge badge--ok">Terverifikasi</span></td>
+                      </tr>
+                      <tr>
+                        <td class="cell-center">3</td>
+                        <td>Genap 2024/2025</td>
+                        <td>KHS - Genap 2025.pdf</td>
+                        <td>20 Jan 2025</td>
+                        <td class="cell-center"><span class="badge badge--ok">Terverifikasi</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- ===== MODAL / POP-UP ===== -->
+
+    <script src="../js/app.js"></script>
+  </body>
+</html>

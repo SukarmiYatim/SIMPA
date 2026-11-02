@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Akun | SIPMA</title>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="login auth-register">
+  <main class="login__main">
+    <section class="login__card login__card--register">
+
+      <div class="auth-logo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 9 12 4 22 9 12 14 2 9Z"/>
+          <path d="M6 11v5c3 3 9 3 12 0v-5M22 9v6"/>
+        </svg>
+      </div>
+
+      <div class="auth-heading">
+        <h1>Daftar Akun</h1>
+        <p>Sistem Informasi Pemantauan Akademik</p>
+      </div>
+
+      <form class="auth-form" id="register-form">
+
+        <div class="field">
+          <label class="field__label" for="npm-nidn">
+            NPM/NIDN
+          </label>
+          <input class="input" type="text" id="npm-nidn"
+            name="npm_nidn" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="nama">
+            Nama Lengkap
+          </label>
+          <input class="input" type="text" id="nama"
+            name="nama" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="email-daftar">
+            Email
+          </label>
+          <input class="input" type="email" id="email-daftar"
+            name="email" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="password-daftar">
+            Password
+          </label>
+          <input class="input" type="password" id="password-daftar"
+            name="password" minlength="8" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="konfirmasi-daftar">
+            Konfirmasi Password
+          </label>
+          <input class="input" type="password" id="konfirmasi-daftar"
+            name="konfirmasi_password"
+            data-match="password-daftar" required>
+        </div>
+
+        <button class="btn btn--block" type="submit">
+          Daftar Sekarang
+        </button>
+
+      </form>
+
+      <p class="auth-switch">
+        Sudah punya akun?
+        <a class="auth-link" href="index.html">Masuk</a>
+      </p>
+
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

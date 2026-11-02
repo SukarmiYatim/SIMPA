@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profil Saya | SIPMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+      <symbol id="i-cap" viewBox="0 0 24 24">
+        <path d="m2 9 10-5 10 5-10 5z" />
+        <path d="M6 11.500V16c0 1.500 3 3 6 3s6-1.500 6-3v-4.500M22 9v6" />
+      </symbol>
+      <symbol id="i-file-text" viewBox="0 0 24 24">
+        <path d="M6 3h8l5 5v13H6z" />
+        <path d="M14 3v5h5M9 13h6M9 17h6" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+      </symbol>
+      <symbol id="i-log-out" viewBox="0 0 24 24">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></symbol>
+      <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.800 2.800 0 0 0-4-4L4 16z" /></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+      </symbol>
+      <symbol id="i-user-circle" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="10" r="3.5" />
+        <path d="M5.5 19c1.5-3 4-4 6.5-4s5 1 6.5 4" />
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="3.5" />
+        <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+        <path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.5.7 4 2.5 4 5.5" />
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
+    </svg>
+    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+    <div class="app" data-app>
+      <!-- ===== SIDEBAR: navigasi utama sesuai role ===== -->
+      <aside class="sidebar" id="sidebar" aria-label="Menu utama">
+        <a class="brand" href="beranda.html">
+          <span class="brand__logo">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap" /></svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">SIPMA</span>
+            <span class="brand__sub">Dosen PA</span>
+          </span>
+        </a>
+        <nav class="sidebar__nav" aria-label="Navigasi Dosen PA">
+          <ul class="sidebar__list">
+            <li>
+              <a class="sidebar__link" href="beranda.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-home" /></svg>
+                <span>Beranda</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="mahasiswa-bimbingan.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users" /></svg>
+                <span>Mahasiswa Bimbingan</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="tindak-lanjut.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-file-text" /></svg>
+                <span>Tindak Lanjut</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link sidebar__link--active" href="profil.html" aria-current="page">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user" /></svg>
+                <span>Profil Saya</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <a class="sidebar__link sidebar__logout" href="../index.html">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-log-out" /></svg>
+          <span>Keluar</span>
+        </a>
+      </aside>
+      <div class="app__backdrop" data-sidebar-toggle></div>
+
+      <div class="app__main">
+        <!-- ===== TOPBAR: tombol menu + identitas pengguna ===== -->
+        <header class="topbar">
+          <button
+            class="topbar__toggle"
+            type="button"
+            data-sidebar-toggle
+            aria-controls="sidebar"
+            aria-expanded="true"
+            aria-label="Tampilkan atau sembunyikan menu"
+          >
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu" /></svg>
+          </button>
+          <div class="topbar__user">
+            <span class="avatar">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
+            </span>
+            <p class="topbar__identity">
+              <span class="topbar__name">Dr. Siti Rahayu, M.Pd.</span>
+              <span class="topbar__role">Dosen Penasehat Akademik</span>
+            </p>
+          </div>
+        </header>
+
+        <!-- ===== KONTEN UTAMA HALAMAN ===== -->
+        <main class="content" id="konten">
+          <header class="page-header">
+            <h1 class="page-header__title">Profil Saya</h1>
+            <p class="page-header__desc">Informasi data diri dan akun Anda</p>
+          </header>
+          <div class="profile">
+            <section class="card profile__photo" aria-labelledby="judul-foto">
+              <h2 class="card__title" id="judul-foto">Foto Profil</h2>
+              <span class="avatar avatar--xl">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
+              </span>
+              <button class="btn btn--outline btn--sm" type="button" data-open-modal="modal-profil">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pencil" /></svg>
+                Edit Profil
+              </button>
+            </section>
+            <section class="card card--tint" aria-labelledby="judul-info">
+              <h2 class="card__title" id="judul-info">Informasi Dosen</h2>
+
+              <dl class="info-list">
+                <div class="info-list__row">
+                  <dt>Nama Lengkap</dt>
+                  <dd>Dr. Siti Rahayu, M.Pd</dd>
+                </div>
+                <div class="info-list__row">
+                  <dt>NIDN</dt>
+                  <dd>1987021020</dd>
+                </div>
+                <div class="info-list__row">
+                  <dt>Program Studi</dt>
+                  <dd>Informatika</dd>
+                </div>
+                <div class="info-list__row">
+                  <dt>Jabatan</dt>
+                  <dd>Dosen PA</dd>
+                </div>
+                <div class="info-list__row">
+                  <dt>Email</dt>
+                  <dd>siti.rahayu@univ.ac.id</dd>
+                </div>
+              </dl>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- ===== MODAL / POP-UP ===== -->
+    <dialog
+      class="modal"
+      id="modal-profil"
+      aria-labelledby="modal-profil-judul"
+      data-toast="Profil berhasil diperbarui"
+    >
+      <form class="modal__form" method="dialog">
+        <header class="modal__header">
+          <div>
+            <h2 class="modal__title" id="modal-profil-judul">Edit Profil</h2>
+          </div>
+          <button class="modal__close" type="submit" value="cancel" formnovalidate aria-label="Tutup">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x" /></svg>
+          </button>
+        </header>
+        <div class="modal__body">
+          <div class="field">
+            <label class="field__label" for="p-nama">
+              Nama Lengkap
+              <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <input class="input" id="p-nama" name="p-nama" type="text" value="Dr. Siti Rahayu, M.Pd" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="p-nidn">
+              NIDN
+              <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <input class="input" id="p-nidn" name="p-nidn" type="text" value="1987021020" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="p-email">
+              Email
+              <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="input"
+              id="p-email"
+              name="p-email"
+              type="email"
+              value="siti.rahayu@univ.ac.id"
+              required
+              readonly
+            />
+          </div>
+          <div class="field">
+            <label class="field__label" for="p-telp">No. Telepon</label>
+            <input class="input" id="p-telp" name="p-telp" type="tel" />
+          </div>
+        </div>
+        <footer class="modal__footer">
+          <button class="btn btn--secondary" type="submit" value="cancel" formnovalidate>Batal</button>
+          <button class="btn" type="submit" value="ok">Simpan</button>
+        </footer>
+      </form>
+    </dialog>
+    <script src="../js/app.js"></script>
+  </body>
+</html>

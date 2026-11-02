@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proses Klasifikasi dan Verifikasi | SIPMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+      <symbol id="i-book" viewBox="0 0 24 24">
+        <path d="M12 6c-2-1.5-5-2-9-2v14c4 0 7 .5 9 2 2-1.500 5-2 9-2V4c-4 0-7 .5-9 2z" />
+        <path d="M12 6v14" />
+      </symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24">
+        <path d="m2 9 10-5 10 5-10 5z" />
+        <path d="M6 11.500V16c0 1.500 3 3 6 3s6-1.500 6-3v-4.500M22 9v6" />
+      </symbol>
+      <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6" /></symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" /></symbol>
+      <symbol id="i-clipboard-check" viewBox="0 0 24 24">
+        <rect x="5" y="4" width="14" height="17" rx="2" />
+        <path d="M9 4V3h6v1M9 13l2 2 4-4" />
+      </symbol>
+      <symbol id="i-clipboard-list" viewBox="0 0 24 24">
+        <rect x="5" y="4" width="14" height="17" rx="2" />
+        <path d="M9 4V3h6v1M9 11h6M9 15h6" />
+      </symbol>
+      <symbol id="i-file-text" viewBox="0 0 24 24">
+        <path d="M6 3h8l5 5v13H6z" />
+        <path d="M14 3v5h5M9 13h6M9 17h6" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+      </symbol>
+      <symbol id="i-log-out" viewBox="0 0 24 24">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></symbol>
+      <symbol id="i-play-circle" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="m10 8 6 4-6 4z" />
+      </symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+      </symbol>
+      <symbol id="i-user-circle" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="10" r="3.5" />
+        <path d="M5.5 19c1.5-3 4-4 6.5-4s5 1 6.5 4" />
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
+    </svg>
+    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+    <div class="app" data-app>
+      <!-- ===== SIDEBAR: navigasi utama sesuai role ===== -->
+      <aside class="sidebar" id="sidebar" aria-label="Menu utama">
+        <a class="brand" href="beranda.html">
+          <span class="brand__logo">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap" /></svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">SIPMA</span>
+            <span class="brand__sub">Sistem Informasi Pemantauan Akademik</span>
+          </span>
+        </a>
+        <nav class="sidebar__nav" aria-label="Navigasi Admin">
+          <ul class="sidebar__list">
+            <li>
+              <a class="sidebar__link" href="beranda.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-home" /></svg>
+                <span>Beranda</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="kelola-pengguna.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user" /></svg>
+                <span>Kelola Pengguna</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="data-akademik.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-book" /></svg>
+                <span>Data Akademik</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link sidebar__link--active" href="verifikasi-klasifikasi.html" aria-current="page">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard-check" /></svg>
+                <span>Proses Klasifikasi dan Verifikasi Hasil</span>
+              </a>
+            </li>
+            <li>
+              <a class="sidebar__link" href="rekapitulasi-risiko.html">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard-list" /></svg>
+                <span>Rekapitulasi Risiko</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <a class="sidebar__link sidebar__logout" href="../index.html">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-log-out" /></svg>
+          <span>Keluar</span>
+        </a>
+      </aside>
+      <div class="app__backdrop" data-sidebar-toggle></div>
+
+      <div class="app__main">
+        <!-- ===== TOPBAR: tombol menu + identitas pengguna ===== -->
+        <header class="topbar">
+          <button
+            class="topbar__toggle"
+            type="button"
+            data-sidebar-toggle
+            aria-controls="sidebar"
+            aria-expanded="true"
+            aria-label="Tampilkan atau sembunyikan menu"
+          >
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu" /></svg>
+          </button>
+          <div class="topbar__user">
+            <span class="avatar">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
+            </span>
+            <p class="topbar__identity">
+              <span class="topbar__name">Admin</span>
+              <span class="topbar__role">Program Studi Informatika</span>
+            </p>
+          </div>
+        </header>
+
+        <!-- ===== KONTEN UTAMA HALAMAN ===== -->
+        <main class="content" id="konten">
+          <header class="page-header">
+            <h1 class="page-header__title">Proses dan Verifikasi Klasifikasi</h1>
+            <p class="page-header__desc">
+              Jalankan proses klasifikasi menggunakan Naive Bayes dan verifikasi hasilnya sebelum ditetapkan sebagai
+              status risiko final
+            </p>
+          </header>
+          <div class="grid-2">
+            <section class="card" aria-labelledby="judul-konfigurasi">
+              <div class="step__head">
+                <span class="step__num" aria-hidden="true">1</span>
+                <h2 class="card__title" id="judul-konfigurasi">Konfigurasi proses Naive Bayes</h2>
+              </div>
+              <form class="stack" aria-label="Konfigurasi proses klasifikasi">
+                <fieldset class="check-grid">
+                  <legend class="check-grid__legend">Atur parameter klasifikasi sesuai kebutuhan</legend>
+                  <label class="check">
+                    <input class="check__input" type="checkbox" name="parameter" value="ipk" checked />
+                    IPK
+                  </label>
+                  <label class="check">
+                    <input class="check__input" type="checkbox" name="parameter" value="ips" checked />
+                    IPS terakhir
+                  </label>
+                  <label class="check">
+                    <input class="check__input" type="checkbox" name="parameter" value="sks" checked />
+                    Jumlah SKS lulus
+                  </label>
+                  <label class="check">
+                    <input class="check__input" type="checkbox" name="parameter" value="mengulang" checked />
+                    Mata kuliah mengulang
+                  </label>
+                </fieldset>
+                <button class="btn btn--block" type="button">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play-circle" /></svg>
+                  Mulai proses klasifikasi
+                </button>
+              </form>
+            </section>
+            <section class="card" aria-labelledby="judul-hasil">
+              <div class="step__head">
+                <span class="step__num" aria-hidden="true">2</span>
+                <h2 class="card__title" id="judul-hasil">Hasil Klasifikasi</h2>
+              </div>
+              <p class="card__desc">Hasil klasifikasi belum final hingga diverifikasi oleh admin prodi</p>
+              <dl class="summary">
+                <div class="summary__row">
+                  <dt>Total data diproses</dt>
+                  <dd>100 Mahasiswa</dd>
+                </div>
+                <div class="summary__row">
+                  <span class="dot dot--low" aria-hidden="true"></span>
+                  <dt>Rendah</dt>
+                  <dd>25 (25%)</dd>
+                </div>
+                <div class="summary__row">
+                  <span class="dot dot--mid" aria-hidden="true"></span>
+                  <dt>Sedang</dt>
+                  <dd>25 (25%)</dd>
+                </div>
+                <div class="summary__row">
+                  <span class="dot dot--high" aria-hidden="true"></span>
+                  <dt>Tinggi</dt>
+                  <dd>50 (50%)</dd>
+                </div>
+              </dl>
+            </section>
+          </div>
+          <section class="card" aria-labelledby="judul-terbaru">
+            <h2 class="card__title" id="judul-terbaru">Hasil Klasifikasi Terbaru</h2>
+
+            <div class="table-wrap">
+              <table class="table">
+                <caption class="sr-only">Hasil klasifikasi terbaru</caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="cell-center">No.</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">NPM</th>
+                    <th scope="col" class="cell-center">Prediksi Risiko</th>
+                    <th scope="col" class="cell-center">Status Verifikasi</th>
+                    <th scope="col" class="cell-center">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-center">1</td>
+                    <td>Ahmad Rizki</td>
+                    <td>2311234567</td>
+                    <td class="cell-center"><span class="badge badge--low">Rendah</span></td>
+                    <td class="cell-center"><span class="badge badge--pending">Perlu Verifikasi</span></td>
+                    <td class="cell-center">
+                      <button
+                        class="link"
+                        type="button"
+                        data-open-modal="modal-verifikasi"
+                        data-nama="Ahmad Rizki"
+                        data-npm="NPM 2311234567"
+                        data-risiko="Risiko Rendah"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-file-text" /></svg>
+                        Tinjau
+                        <span class="sr-only">Ahmad Rizki</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="cell-center">2</td>
+                    <td>Siti Nurhalizah</td>
+                    <td>2311234568</td>
+                    <td class="cell-center"><span class="badge badge--mid">Sedang</span></td>
+                    <td class="cell-center"><span class="badge badge--pending">Perlu Verifikasi</span></td>
+                    <td class="cell-center">
+                      <button
+                        class="link"
+                        type="button"
+                        data-open-modal="modal-verifikasi"
+                        data-nama="Siti Nurhalizah"
+                        data-npm="NPM 2311234568"
+                        data-risiko="Risiko Sedang"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-file-text" /></svg>
+                        Tinjau
+                        <span class="sr-only">Siti Nurhalizah</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="cell-center">3</td>
+                    <td>Budi Santoro</td>
+                    <td>2311234569</td>
+                    <td class="cell-center"><span class="badge badge--high">Tinggi</span></td>
+                    <td class="cell-center"><span class="badge badge--pending">Perlu Verifikasi</span></td>
+                    <td class="cell-center">
+                      <button
+                        class="link"
+                        type="button"
+                        data-open-modal="modal-verifikasi"
+                        data-nama="Budi Santoro"
+                        data-npm="NPM 2311234569"
+                        data-risiko="Risiko Tinggi"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-file-text" /></svg>
+                        Tinjau
+                        <span class="sr-only">Budi Santoro</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="cell-center">4</td>
+                    <td>Dewi Lestari</td>
+                    <td>2311234570</td>
+                    <td class="cell-center"><span class="badge badge--low">Rendah</span></td>
+                    <td class="cell-center"><span class="badge badge--pending">Perlu Verifikasi</span></td>
+                    <td class="cell-center">
+                      <button
+                        class="link"
+                        type="button"
+                        data-open-modal="modal-verifikasi"
+                        data-nama="Dewi Lestari"
+                        data-npm="NPM 2311234570"
+                        data-risiko="Risiko Rendah"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-file-text" /></svg>
+                        Tinjau
+                        <span class="sr-only">Dewi Lestari</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="cell-center">5</td>
+                    <td>Rizky Maulana</td>
+                    <td>2311234571</td>
+                    <td class="cell-center"><span class="badge badge--mid">Sedang</span></td>
+                    <td class="cell-center"><span class="badge badge--pending">Perlu Verifikasi</span></td>
+                    <td class="cell-center">
+                      <button
+                        class="link"
+                        type="button"
+                        data-open-modal="modal-verifikasi"
+                        data-nama="Rizky Maulana"
+                        data-npm="NPM 2311234571"
+                        data-risiko="Risiko Sedang"
+                      >
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-file-text" /></svg>
+                        Tinjau
+                        <span class="sr-only">Rizky Maulana</span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <nav class="pagination" aria-label="Navigasi halaman tabel">
+              <ul class="pagination__list">
+                <li>
+                  <a class="pagination__link" href="#" aria-label="Halaman sebelumnya">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-left" /></svg>
+                  </a>
+                </li>
+                <li><a class="pagination__link pagination__link--active" href="#" aria-current="page">1</a></li>
+                <li><a class="pagination__link" href="#">2</a></li>
+                <li><span class="pagination__gap" aria-hidden="true">…</span></li>
+                <li>
+                  <a class="pagination__link" href="#" aria-label="Halaman berikutnya">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-right" /></svg>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ===== MODAL / POP-UP ===== -->
+    <dialog
+      class="modal"
+      id="modal-verifikasi"
+      aria-labelledby="modal-verifikasi-judul"
+      data-toast="Hasil klasifikasi berhasil diverifikasi"
+    >
+      <form class="modal__form" method="dialog">
+        <header class="modal__header">
+          <div>
+            <h2 class="modal__title" id="modal-verifikasi-judul">Verifikasi Hasil Klasifikasi</h2>
+          </div>
+          <button class="modal__close" type="submit" value="cancel" formnovalidate aria-label="Tutup">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x" /></svg>
+          </button>
+        </header>
+        <div class="modal__body">
+          <div class="person">
+            <span class="avatar">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
+            </span>
+            <div>
+              <p class="person__name" data-bind="nama">Ahmad Rizky</p>
+              <p class="text-muted" data-bind="npm">NPM 2311234567</p>
+            </div>
+            <span class="badge badge--low person__aside" data-bind="risiko">Risiko Rendah</span>
+          </div>
+          <dl class="mini-stats">
+            <div class="mini-stat">
+              <dt class="mini-stat__label">IPK</dt>
+              <dd class="mini-stat__value">3.12</dd>
+            </div>
+            <div class="mini-stat">
+              <dt class="mini-stat__label">IPS Terakhir</dt>
+              <dd class="mini-stat__value">3.50</dd>
+            </div>
+            <div class="mini-stat">
+              <dt class="mini-stat__label">SKS Lulus</dt>
+              <dd class="mini-stat__value">96</dd>
+            </div>
+          </dl>
+          <div class="notice">
+            <p class="notice__title">Status Verifikasi</p>
+            <p><strong>Perlu Verifikasi</strong></p>
+            <p>Hasil klasifikasi menunggu pemeriksaan Admin</p>
+          </div>
+        </div>
+        <footer class="modal__footer">
+          <button class="btn btn--secondary" type="submit" value="cancel" formnovalidate>Kembali</button>
+          <button class="btn" type="submit" value="ok">Verifikasi</button>
+        </footer>
+      </form>
+    </dialog>
+    <script src="../js/app.js"></script>
+  </body>
+</html>
