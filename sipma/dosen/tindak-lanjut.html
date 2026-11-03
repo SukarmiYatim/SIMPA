@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="id">
   <head>
@@ -11,7 +12,117 @@
     <link rel="stylesheet" href="../css/layout.css" />
     <link rel="stylesheet" href="../css/components.css" />
     <link rel="stylesheet" href="../css/pages.css" />
+
+    <!-- CSS POP-UP UBAH WAKTU BIMBINGAN -->
+    <style>
+      #modal-waktu {
+        width: min(600px, calc(100% - 30px));
+        max-width: 600px;
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        background: #fff;
+      }
+
+      #modal-waktu::backdrop {
+        background: rgba(0, 0, 0, 0.55);
+      }
+
+      #modal-waktu .modal__form {
+        padding: 25px;
+      }
+
+      #modal-waktu .modal__header {
+        margin-bottom: 15px;
+      }
+
+      #modal-waktu .modal__title {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      #modal-waktu .modal__body {
+        padding: 20px;
+        background: #eef5ff;
+      }
+
+      #modal-waktu .modal__body > .text-muted {
+        margin-bottom: 20px;
+      }
+
+      #modal-waktu .day-picker {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        border: none;
+        padding: 0;
+        margin-bottom: 25px;
+      }
+
+      #modal-waktu .day-picker legend {
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      #modal-waktu .check {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        font-size: 13px;
+      }
+
+      #modal-waktu .check__input {
+        width: 17px;
+        height: 17px;
+        accent-color: #1685f8;
+        cursor: pointer;
+      }
+
+      #modal-waktu .time-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      #modal-waktu .time-row .input {
+        background: white;
+        border: 1px solid #8bbcff;
+      }
+
+      #modal-waktu .modal__footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        padding-top: 20px;
+      }
+
+      /* Informasi mahasiswa yang sedang dipilih */
+      .student-not-found {
+        display: none;
+        padding: 12px;
+        color: #b42318;
+        background: #fff0ee;
+        border-radius: 8px;
+        font-size: 13px;
+      }
+
+      .student-not-found.show {
+        display: block;
+      }
+
+      @media (max-width: 600px) {
+        #modal-waktu .day-picker {
+          gap: 10px;
+        }
+
+        #modal-waktu .time-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
+
   <body>
     <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
       <symbol id="i-calendar" viewBox="0 0 24 24">
@@ -50,10 +161,10 @@
       </symbol>
       <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
     </svg>
+
     <a class="skip-link" href="#konten">Lewati ke konten utama</a>
 
     <div class="app" data-app>
-      <!-- ===== SIDEBAR: navigasi utama sesuai role ===== -->
       <aside class="sidebar" id="sidebar" aria-label="Menu utama">
         <a class="brand" href="beranda.html">
           <span class="brand__logo">
@@ -64,6 +175,7 @@
             <span class="brand__sub">Dosen PA</span>
           </span>
         </a>
+
         <nav class="sidebar__nav" aria-label="Navigasi Dosen PA">
           <ul class="sidebar__list">
             <li>
@@ -92,15 +204,16 @@
             </li>
           </ul>
         </nav>
+
         <a class="sidebar__link sidebar__logout" href="../index.html">
           <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-log-out" /></svg>
           <span>Keluar</span>
         </a>
       </aside>
+
       <div class="app__backdrop" data-sidebar-toggle></div>
 
       <div class="app__main">
-        <!-- ===== TOPBAR: tombol menu + identitas pengguna ===== -->
         <header class="topbar">
           <button
             class="topbar__toggle"
@@ -112,6 +225,7 @@
           >
             <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu" /></svg>
           </button>
+
           <div class="topbar__user">
             <span class="avatar">
               <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
@@ -123,12 +237,12 @@
           </div>
         </header>
 
-        <!-- ===== KONTEN UTAMA HALAMAN ===== -->
         <main class="content" id="konten">
           <header class="page-header">
             <h1 class="page-header__title">Catat tindak lanjut pembinaan</h1>
             <p class="page-header__desc">Pilih mahasiswa, kemudian berikan catatan tindak lanjut pembinaan</p>
           </header>
+
           <div class="followup">
             <div class="stack">
               <div class="field">
@@ -145,9 +259,9 @@
                   <option value="Andi Pratama - 2311234569"></option>
                 </datalist>
               </div>
+
               <section class="card card--tint" aria-labelledby="judul-info">
                 <h2 class="card__title" id="judul-info">Informasi mahasiswa</h2>
-
                 <div class="person">
                   <span class="avatar">
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
@@ -172,9 +286,9 @@
                   </div>
                 </dl>
               </section>
+
               <section class="card card--tint" aria-labelledby="judul-jadwal">
                 <h2 class="card__title" id="judul-jadwal">Waktu Bimbingan Dosen</h2>
-
                 <div class="schedule">
                   <span class="schedule__icon">
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-calendar" /></svg>
@@ -199,9 +313,9 @@
                 </div>
               </section>
             </div>
+
             <section class="card" aria-labelledby="judul-form">
               <h2 class="card__title" id="judul-form">Form Tindak Lanjut</h2>
-
               <form class="stack" aria-labelledby="judul-form">
                 <div class="field">
                   <label class="field__label" for="tgl-pembinaan">
@@ -217,6 +331,7 @@
                     required
                   />
                 </div>
+
                 <div class="field">
                   <label class="field__label" for="catatan">
                     Catatan Pembinaan
@@ -233,6 +348,7 @@
                   ></textarea>
                   <span class="field__counter" id="hitung-catatan">0/500</span>
                 </div>
+
                 <div class="form-actions">
                   <button class="btn btn--outline" type="reset">Batal</button>
                   <button class="btn" type="submit">Simpan</button>
@@ -240,9 +356,9 @@
               </form>
             </section>
           </div>
+
           <section class="card" aria-labelledby="judul-riwayat">
             <h2 class="card__title" id="judul-riwayat">Riwayat tindak lanjut pembinaan</h2>
-
             <div class="table-wrap">
               <table class="table">
                 <caption class="sr-only">Riwayat tindak lanjut pembinaan</caption>
@@ -277,7 +393,7 @@
       </div>
     </div>
 
-    <!-- ===== MODAL / POP-UP ===== -->
+    <!-- MODAL / POP-UP -->
     <dialog
       class="modal"
       id="modal-waktu"
@@ -293,10 +409,12 @@
             <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x" /></svg>
           </button>
         </header>
+
         <div class="modal__body">
           <p class="text-muted">
             Atur jadwal waktu bimbingan anda. Jadwal ini akan ditetapkan kepada mahasiswa bimbingan.
           </p>
+
           <fieldset class="day-picker">
             <legend class="field__label">
               Hari Bimbingan
@@ -323,23 +441,24 @@
               Jumat
             </label>
           </fieldset>
-          <div class="time-row">
-            <div class="field">
-              <label class="field__label" for="jam-mulai">Jam mulai</label>
-              <input class="input" id="jam-mulai" name="jam-mulai" type="time" value="13:00" />
-            </div>
-            <div class="field">
-              <label class="field__label" for="jam-selesai">Jam selesai</label>
-              <input class="input" id="jam-selesai" name="jam-selesai" type="time" value="16:00" />
-            </div>
+        
+        <div class="time-row">
+          <div class="field">
+            <input class="input" id="jam-mulai" name="jam-mulai" type="time" value="13:00" />
           </div>
-        </div>
+          <div class="field">
+            <input class="input" id="jam-selesai" name="jam-selesai" type="time" value="16:00" />
+          </div>
+      </div>
+
         <footer class="modal__footer">
           <button class="btn btn--secondary" type="submit" value="cancel" formnovalidate>Batal</button>
           <button class="btn" type="submit" value="ok">Simpan</button>
         </footer>
       </form>
     </dialog>
+
     <script src="../js/app.js"></script>
   </body>
 </html>
+```

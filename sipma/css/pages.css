@@ -1,9 +1,6 @@
 
 /* =====================================================================
    pages.css — BAGIAN KHUSUS HALAMAN TERTENTU
-   Hanya berisi hal yang tidak dipakai ulang di banyak tempat:
-   login, donut, grafik garis, langkah proses, timeline,
-   area upload, pratinjau dokumen, profil, form tindak lanjut.
    ===================================================================== */
 
 /* ---------- LOGIN ---------- */
@@ -73,7 +70,7 @@
   color: var(--muted);
 }
 
-/* Pilihan peran: radio button yang tampil sebagai tombol segmen */
+/* Pilihan peran */
 .role-picker {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -108,7 +105,7 @@
   outline-offset: 2px;
 }
 
-/* ---------- AUTENTIKASI: Lupa Password, Daftar, Reset ---------- */
+/* ---------- AUTENTIKASI ---------- */
 .login__card--lg {
   width: min(100%, 528px);
 }
@@ -124,7 +121,7 @@
 }
 
 .auth-link--end {
-  align-self: flex-end; /* rata kanan, tepat di bawah kolom password */
+  align-self: flex-end;
 }
 
 .auth-switch {
@@ -136,12 +133,10 @@
   align-self: center;
 }
 
-/* Admin tidak punya Lupa Password / Daftar: disembunyikan saat radio Admin terpilih */
 .login:has(#peran-admin:checked) .auth-only {
   display: none;
 }
 
-/* Tombol mata: tersembunyi = mata bergaris, terlihat = mata tanpa garis */
 .eye .eye__show {
   display: none;
 }
@@ -154,7 +149,7 @@
   display: none;
 }
 
-/* ---------- DONUT (distribusi risiko) ---------- */
+/* ---------- DONUT ---------- */
 .distribution {
   display: flex;
   flex-wrap: wrap;
@@ -163,7 +158,6 @@
 }
 
 .donut {
-  /* --s1 = akhir segmen Rendah, --s2 = akhir segmen Sedang (diisi di HTML) */
   display: grid;
   flex: none;
   place-items: center;
@@ -194,21 +188,51 @@
   font-weight: var(--fw-bold);
 }
 
-/* ---------- GRAFIK GARIS (SVG) ---------- */
+/* ---------- GRAFIK GARIS ---------- */
 .chart {
   width: 100%;
   height: auto;
 }
 
-.chart__grid { stroke: var(--line); stroke-width: 1; }
-.chart__axis-text { font-size: 11px; fill: var(--muted); }
-.chart__line { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
-.chart__line--low { stroke: var(--risk-low); }
-.chart__line--mid { stroke: var(--risk-mid); }
-.chart__line--high { stroke: var(--risk-high); }
-.chart__point--low { fill: var(--risk-low); }
-.chart__point--mid { fill: var(--risk-mid); }
-.chart__point--high { fill: var(--risk-high); }
+.chart__grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.chart__axis-text {
+  font-size: 11px;
+  fill: var(--muted);
+}
+
+.chart__line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.chart__line--low {
+  stroke: var(--risk-low);
+}
+
+.chart__line--mid {
+  stroke: var(--risk-mid);
+}
+
+.chart__line--high {
+  stroke: var(--risk-high);
+}
+
+.chart__point--low {
+  fill: var(--risk-low);
+}
+
+.chart__point--mid {
+  fill: var(--risk-mid);
+}
+
+.chart__point--high {
+  fill: var(--risk-high);
+}
 
 .chart-legend {
   display: flex;
@@ -223,7 +247,7 @@
   gap: 8px;
 }
 
-/* ---------- LANGKAH PROSES (halaman verifikasi) ---------- */
+/* ---------- LANGKAH PROSES ---------- */
 .step__head {
   display: flex;
   align-items: center;
@@ -257,7 +281,7 @@
   color: var(--muted);
 }
 
-/* ---------- KOTAK RINGKASAN DI MODAL VERIFIKASI ---------- */
+/* ---------- RINGKASAN MODAL ---------- */
 .person {
   display: flex;
   align-items: center;
@@ -299,7 +323,7 @@
   font-weight: var(--fw-bold);
 }
 
-/* ---------- PRATINJAU DOKUMEN KHS (modal admin) ---------- */
+/* ---------- PRATINJAU DOKUMEN ---------- */
 .file-info {
   display: flex;
   flex-wrap: wrap;
@@ -343,7 +367,7 @@
   text-align: center;
 }
 
-/* ---------- UPLOAD KHS (mahasiswa) ---------- */
+/* ---------- UPLOAD KHS ---------- */
 .dropzone {
   display: flex;
   flex-direction: column;
@@ -372,7 +396,7 @@
   color: var(--muted);
 }
 
-/* ---------- TIMELINE (riwayat catatan pembinaan) ---------- */
+/* ---------- TIMELINE ---------- */
 .timeline {
   position: relative;
   display: flex;
@@ -424,7 +448,7 @@
   text-align: center;
 }
 
-/* ---------- FORM TINDAK LANJUT (dosen) ---------- */
+/* ---------- FORM TINDAK LANJUT ---------- */
 .followup {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -471,7 +495,7 @@
   gap: 16px;
 }
 
-/* ---------- RESPONSIF KHUSUS HALAMAN ---------- */
+/* ---------- RESPONSIF HALAMAN ---------- */
 @media (width <= 900px) {
   .profile,
   .followup {
@@ -495,25 +519,17 @@
   }
 }
 
-/* Elemen yang didorong ke sisi kanan baris (badge status di samping nama) */
 .person__aside {
   margin-left: auto;
 }
 
-/* ---------- KONTEN DAFTAR AKUN ---------- */
-
+/* ---------- DAFTAR AKUN ---------- */
 .auth-register .login__card--register {
   gap: 16px;
   background: var(--bg-page);
   border-radius: 16px;
 }
 
-.auth-register .auth-logo {
-  display: grid;
-  place-items: center;
-}
-
-/* LOGO DAFTAR AKUN */
 .auth-register .auth-logo {
   display: grid;
   place-items: center;
@@ -543,8 +559,7 @@
   width: 100%;
 }
 
-/* ---------- HALAMAN RESET PASSWORD ---------- */
-
+/* ---------- RESET PASSWORD ---------- */
 .reset-page {
   min-height: 900px;
   display: flex;
@@ -659,7 +674,6 @@
 }
 
 /* ---------- POP-UP RESET PASSWORD ---------- */
-
 .reset-overlay {
   position: fixed;
   inset: 0;
@@ -780,7 +794,7 @@
   }
 }
 
-/* Mengatur panjang pencarian dan program studi */
+/* ---------- TOOLBAR ---------- */
 .toolbar {
   display: flex;
   width: 100%;
@@ -809,4 +823,800 @@
   box-sizing: border-box;
   white-space: nowrap;
   text-align: center;
+}
+
+/* =====================================================================
+   BERANDA DOSEN PA
+   Desain khusus mengikuti gambar referensi
+   ===================================================================== */
+
+/* Layout utama */
+.app[data-page="dosen-dashboard"] {
+  display: grid;
+  grid-template-columns: 129px minmax(0, 1fr);
+  min-height: 100vh;
+  background: #fff;
+}
+
+.app[data-page="dosen-dashboard"] .sidebar {
+  position: relative;
+  width: 129px;
+  min-width: 0;
+  min-height: 100%;
+  padding: 5px 0;
+  background: #112d46;
+}
+
+.app[data-page="dosen-dashboard"] .brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 40px;
+  padding: 0 2px;
+}
+
+.app[data-page="dosen-dashboard"] .brand__logo {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 29px;
+  background: #fff;
+}
+
+.app[data-page="dosen-dashboard"] .brand__logo .icon {
+  width: 34px;
+  height: 29px;
+  color: #112d46;
+  fill: #112d46;
+}
+
+.app[data-page="dosen-dashboard"] .brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.app[data-page="dosen-dashboard"] .brand__name {
+  font-size: 17px;
+  line-height: 20px;
+  color: #fff;
+}
+
+.app[data-page="dosen-dashboard"] .brand__sub {
+  font-size: 10px;
+  color: #fff;
+}
+
+/* Navigasi sidebar */
+.app[data-page="dosen-dashboard"] .sidebar__nav {
+  margin-top: 78px;
+}
+
+.app[data-page="dosen-dashboard"] .sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.app[data-page="dosen-dashboard"] .sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 39px;
+  padding: 5px 12px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.app[data-page="dosen-dashboard"] .sidebar__link .icon {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  stroke-width: 1.5;
+}
+
+.app[data-page="dosen-dashboard"] .sidebar__link--active {
+  color: #fff;
+  background: #0788f9;
+}
+
+.app[data-page="dosen-dashboard"] .sidebar__logout {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 129px;
+  box-sizing: border-box;
+}
+
+/* Area utama */
+.app[data-page="dosen-dashboard"] .app__main {
+  min-width: 0;
+  background: #fff;
+}
+
+/* Navbar */
+.app[data-page="dosen-dashboard"] .topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 46px;
+  min-height: 46px;
+  padding: 0 12px 0 7px;
+  background: #eef5ff;
+}
+
+.app[data-page="dosen-dashboard"] .topbar__toggle {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: #17212b;
+  background: transparent;
+  border: none;
+}
+
+.app[data-page="dosen-dashboard"] .topbar__toggle .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.app[data-page="dosen-dashboard"] .topbar__user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app[data-page="dosen-dashboard"] .topbar__user .avatar {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.app[data-page="dosen-dashboard"] .topbar__user .avatar .icon {
+  width: 30px;
+  height: 30px;
+  color: #20252c;
+}
+
+.app[data-page="dosen-dashboard"] .topbar__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 0;
+  color: #222;
+}
+
+.app[data-page="dosen-dashboard"] .topbar__name,
+.app[data-page="dosen-dashboard"] .topbar__role {
+  font-size: 9px;
+  line-height: 12px;
+}
+
+/* Konten */
+.app[data-page="dosen-dashboard"] .content {
+  padding: 8px 9px 12px;
+}
+
+.app[data-page="dosen-dashboard"] .page-header {
+  margin-bottom: 8px;
+}
+
+.app[data-page="dosen-dashboard"] .page-header__title {
+  margin: 0 0 5px;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 700;
+  color: #111;
+}
+
+.app[data-page="dosen-dashboard"] .page-header__desc {
+  margin: 0;
+  font-size: 11px;
+  line-height: 15px;
+  color: #222;
+}
+
+/* Kartu statistik */
+.app[data-page="dosen-dashboard"] .stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 22px;
+  list-style: none;
+}
+
+.app[data-page="dosen-dashboard"] .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  min-height: 97px;
+  padding: 13px 5px 9px;
+  background: #eef5ff;
+  border: none;
+  border-radius: 19px;
+  text-align: center;
+}
+
+.app[data-page="dosen-dashboard"] .stat__head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  min-height: 23px;
+}
+
+.app[data-page="dosen-dashboard"] .stat__head .icon {
+  order: -1;
+  flex: none;
+  width: 23px;
+  height: 23px;
+}
+
+.app[data-page="dosen-dashboard"] .stat__label {
+  font-size: 9px;
+  line-height: 11px;
+  font-weight: 700;
+  color: #111;
+}
+
+.app[data-page="dosen-dashboard"] .stat__value {
+  margin: 8px 0 3px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #111;
+}
+
+.app[data-page="dosen-dashboard"] .stat__sub {
+  font-size: 11px;
+  line-height: 15px;
+  color: #222;
+}
+
+/* Warna ikon risiko */
+.app[data-page="dosen-dashboard"] .stat--low .icon {
+  color: #00b76a;
+}
+
+.app[data-page="dosen-dashboard"] .stat--mid .icon {
+  color: #ffbd00;
+}
+
+.app[data-page="dosen-dashboard"] .stat--high .icon {
+  color: #ff3045;
+}
+
+/* Dua kartu bagian bawah */
+.app[data-page="dosen-dashboard"] .grid-2 {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.app[data-page="dosen-dashboard"] .card {
+  min-width: 0;
+  min-height: 190px;
+  padding: 12px 14px;
+  background: #eef5ff;
+  border: none;
+  border-radius: 22px;
+  box-shadow: none;
+}
+
+.app[data-page="dosen-dashboard"] .card__title {
+  margin: 0 0 12px;
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+}
+
+/* Distribusi risiko */
+.app[data-page="dosen-dashboard"] .distribution {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
+  min-height: 125px;
+}
+
+.app[data-page="dosen-dashboard"] .donut {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.app[data-page="dosen-dashboard"] .donut__hole {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.app[data-page="dosen-dashboard"] .donut__total {
+  font-size: 19px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.app[data-page="dosen-dashboard"] .donut__hole .text-muted {
+  font-size: 10px;
+  line-height: 15px;
+}
+
+/* Legenda */
+.app[data-page="dosen-dashboard"] .legend {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.app[data-page="dosen-dashboard"] .legend__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.app[data-page="dosen-dashboard"] .dot {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.app[data-page="dosen-dashboard"] .dot--low {
+  background: #2cc65c;
+}
+
+.app[data-page="dosen-dashboard"] .dot--mid {
+  background: #ffca00;
+}
+
+.app[data-page="dosen-dashboard"] .dot--high {
+  background: #ff0808;
+}
+
+/* Tindak lanjut terbaru */
+.app[data-page="dosen-dashboard"] .feed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.app[data-page="dosen-dashboard"] .feed__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  min-width: 0;
+}
+
+.app[data-page="dosen-dashboard"] .feed__icon {
+  display: grid;
+  flex: none;
+  place-items: start center;
+  width: 22px;
+  height: 22px;
+}
+
+.app[data-page="dosen-dashboard"] .feed__icon .icon {
+  width: 20px;
+  height: 20px;
+  color: #252a32;
+}
+
+.app[data-page="dosen-dashboard"] .feed__item > div {
+  min-width: 0;
+}
+
+.app[data-page="dosen-dashboard"] .feed__title {
+  margin: 0;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
+  color: #222;
+}
+
+.app[data-page="dosen-dashboard"] .feed__time {
+  display: block;
+  margin: 0;
+  font-size: 10px;
+  line-height: 12px;
+  color: #222;
+}
+
+.app[data-page="dosen-dashboard"] .feed__text {
+  margin: 0;
+  font-size: 10px;
+  line-height: 12px;
+  color: #222;
+}
+
+/* Responsif */
+@media (max-width: 700px) {
+  .app[data-page="dosen-dashboard"] {
+    grid-template-columns: 129px minmax(0, 1fr);
+  }
+
+  .app[data-page="dosen-dashboard"] .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .app[data-page="dosen-dashboard"] .grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app[data-page="dosen-dashboard"] .card {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 420px) {
+  .app[data-page="dosen-dashboard"] {
+    grid-template-columns: 1fr;
+  }
+
+  .app[data-page="dosen-dashboard"] .sidebar {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 129px;
+  }
+
+  .app[data-page="dosen-dashboard"] .content {
+    padding: 10px;
+  }
+}
+
+
+/* ---------- DETAIL MAHASISWA BIMBINGAN ---------- */
+
+.detail-page {
+  padding-top: 12px;
+}
+
+.detail-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.detail-back .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.detail-heading {
+  margin-left: 28px;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.detail-profile {
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  grid-template-rows: auto auto;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #eef5ff;
+  border-radius: 22px;
+}
+
+.detail-profile__identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  color: #20252d;
+}
+
+.detail-avatar .icon {
+  width: 34px;
+  height: 34px;
+  fill: #20252d;
+}
+
+.detail-profile__identity strong {
+  display: block;
+  font-size: 12px;
+}
+
+.detail-profile__identity p {
+  margin: 3px 0 0;
+  font-size: 11px;
+}
+
+.detail-profile__info {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  padding-left: 6px;
+}
+
+.detail-profile__info div {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+}
+
+.detail-profile__info strong {
+  font-weight: 400;
+}
+
+.detail-profile__status {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+}
+
+.detail-status,
+.detail-verified {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 100px;
+  padding: 5px 10px;
+  border-radius: 9px;
+  font-size: 10px;
+  color: #111;
+}
+
+.detail-status .icon,
+.detail-verified .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.detail-status--rendah {
+  background: #35c968;
+}
+
+.detail-status--sedang {
+  background: #ffca05;
+}
+
+.detail-status--tinggi {
+  background: #ff4545;
+  color: #fff;
+}
+
+.detail-verified {
+  background: #7cdaa0;
+  font-weight: 700;
+}
+
+.detail-section {
+  margin-bottom: 14px;
+}
+
+.detail-section h2 {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.detail-academic-wrap {
+  overflow-x: auto;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.detail-academic {
+  border-collapse: collapse;
+  font-size: 10px;
+  text-align: center;
+}
+
+.detail-academic th,
+.detail-academic td {
+  padding: 6px 10px;
+  border: 1px solid #777;
+  white-space: nowrap;
+}
+
+.detail-academic th {
+  font-weight: 600;
+}
+
+.detail-academic td {
+  font-weight: 400;
+}
+
+.detail-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: min(100%, 390px);
+  padding: 8px 12px;
+  background: #eef5ff;
+  border-radius: 20px;
+}
+
+.detail-result__icon {
+  flex: none;
+}
+
+.detail-result__icon .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.detail-result__content {
+  flex: 1;
+}
+
+.detail-result__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  color: #16bd60;
+}
+
+.detail-final {
+  padding: 3px 18px;
+  background: #32cc63;
+  color: #111;
+  font-size: 10px;
+  text-align: center;
+}
+
+.detail-result__content p {
+  margin: 0;
+  max-width: 230px;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.detail-result__label--rendah {
+  color: #16bd60;
+}
+
+.detail-result__label--sedang {
+  color: #d99e00;
+}
+
+.detail-result__label--tinggi {
+  color: #ed3030;
+}
+
+.detail-probability {
+  width: min(100%, 390px);
+  padding: 9px 12px;
+  background: #eef5ff;
+  border-radius: 20px;
+}
+
+.probability-row {
+  display: grid;
+  grid-template-columns: 14px 60px minmax(60px, 1fr) 65px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+  font-size: 10px;
+}
+
+.probability-row:last-child {
+  margin-bottom: 0;
+}
+
+.probability-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.probability-dot.low {
+  background: #32c968;
+}
+
+.probability-dot.mid {
+  background: #ffca05;
+}
+
+.probability-dot.high {
+  background: #ff4545;
+}
+
+.probability-track {
+  height: 14px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.probability-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.probability-fill.low {
+  background: #32c968;
+}
+
+.probability-fill.mid {
+  background: #ffca05;
+}
+
+.probability-fill.high {
+  background: #ff4545;
+}
+
+.probability-value {
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .detail-profile {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail-profile__status {
+    grid-column: 1;
+    grid-row: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .detail-academic-wrap {
+    width: 100%;
+  }
+
+  .detail-probability,
+  .detail-result {
+    width: 100%;
+  }
 }

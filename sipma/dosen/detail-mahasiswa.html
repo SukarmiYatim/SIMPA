@@ -1,226 +1,803 @@
+
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Detail Mahasiswa | SIPMA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/layout.css" />
-    <link rel="stylesheet" href="../css/components.css" />
-    <link rel="stylesheet" href="../css/pages.css" />
-  </head>
-  <body>
-    <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
-      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" /></symbol>
-      <symbol id="i-cap" viewBox="0 0 24 24">
-        <path d="m2 9 10-5 10 5-10 5z" />
-        <path d="M6 11.500V16c0 1.500 3 3 6 3s6-1.500 6-3v-4.500M22 9v6" />
-      </symbol>
-      <symbol id="i-file-text" viewBox="0 0 24 24">
-        <path d="M6 3h8l5 5v13H6z" />
-        <path d="M14 3v5h5M9 13h6M9 17h6" />
-      </symbol>
-      <symbol id="i-home" viewBox="0 0 24 24">
-        <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
-      </symbol>
-      <symbol id="i-log-out" viewBox="0 0 24 24">
-        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
-      </symbol>
-      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></symbol>
-      <symbol id="i-shield-check" viewBox="0 0 24 24">
-        <path d="M12 3 4 6v6c0 5 3.500 8 8 9 4.500-1 8-4 8-9V6z" />
-        <path d="m9 12 2 2 4-4" />
-      </symbol>
-      <symbol id="i-user" viewBox="0 0 24 24">
-        <circle cx="12" cy="8" r="4" />
-        <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
-      </symbol>
-      <symbol id="i-user-circle" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="10" r="3.5" />
-        <path d="M5.5 19c1.5-3 4-4 6.5-4s5 1 6.5 4" />
-      </symbol>
-      <symbol id="i-users" viewBox="0 0 24 24">
-        <circle cx="9" cy="8" r="3.5" />
-        <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
-        <path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.5.7 4 2.5 4 5.5" />
-      </symbol>
-    </svg>
-    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <div class="app" data-app>
-      <!-- ===== SIDEBAR: navigasi utama sesuai role ===== -->
-      <aside class="sidebar" id="sidebar" aria-label="Menu utama">
-        <a class="brand" href="beranda.html">
-          <span class="brand__logo">
-            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap" /></svg>
-          </span>
-          <span class="brand__text">
-            <span class="brand__name">SIPMA</span>
-            <span class="brand__sub">Dosen PA</span>
-          </span>
-        </a>
-        <nav class="sidebar__nav" aria-label="Navigasi Dosen PA">
-          <ul class="sidebar__list">
-            <li>
-              <a class="sidebar__link" href="beranda.html">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-home" /></svg>
-                <span>Beranda</span>
-              </a>
-            </li>
-            <li>
-              <a class="sidebar__link sidebar__link--active" href="mahasiswa-bimbingan.html" aria-current="page">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users" /></svg>
-                <span>Mahasiswa Bimbingan</span>
-              </a>
-            </li>
-            <li>
-              <a class="sidebar__link" href="tindak-lanjut.html">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-file-text" /></svg>
-                <span>Tindak Lanjut</span>
-              </a>
-            </li>
-            <li>
-              <a class="sidebar__link" href="profil.html">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user" /></svg>
-                <span>Profil Saya</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <a class="sidebar__link sidebar__logout" href="../index.html">
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-log-out" /></svg>
-          <span>Keluar</span>
-        </a>
-      </aside>
-      <div class="app__backdrop" data-sidebar-toggle></div>
+  <title>Detail Mahasiswa | SIPMA</title>
 
-      <div class="app__main">
-        <!-- ===== TOPBAR: tombol menu + identitas pengguna ===== -->
-        <header class="topbar">
-          <button
-            class="topbar__toggle"
-            type="button"
-            data-sidebar-toggle
-            aria-controls="sidebar"
-            aria-expanded="true"
-            aria-label="Tampilkan atau sembunyikan menu"
-          >
-            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu" /></svg>
-          </button>
-          <div class="topbar__user">
-            <span class="avatar">
-              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
-            </span>
-            <p class="topbar__identity">
-              <span class="topbar__name">Dr. Siti Rahayu, M.Pd.</span>
-              <span class="topbar__role">Dosen Penasehat Akademik</span>
-            </p>
-          </div>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+
+  <style>
+    /* Tombol kembali */
+    .detail-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: #172d43;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .detail-back:hover {
+      color: #2861ed;
+    }
+
+    /* Identitas mahasiswa */
+    .student-detail {
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      align-items: center;
+      gap: 15px;
+      padding: 16px 20px;
+      margin-bottom: 22px;
+      background: #eef5ff;
+      border-radius: 18px;
+    }
+
+    .student-detail__avatar {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      color: #172d43;
+    }
+
+    .student-detail__avatar .icon {
+      width: 35px;
+      height: 35px;
+    }
+
+    .student-detail__identity strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .student-detail__identity p {
+      margin: 3px 0;
+      font-size: 12px;
+    }
+
+    .student-detail__identity .student-program {
+      margin-top: 12px;
+    }
+
+    .student-detail__status {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-width: 120px;
+    }
+
+    .student-detail__status .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 9px;
+      font-size: 11px;
+    }
+
+    /* Data akademik */
+    .academic-section {
+      margin-bottom: 20px;
+    }
+
+    .academic-section .card__title,
+    .result-section .card__title,
+    .prob-section .card__title {
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .academic-table {
+      width: 100%;
+      max-width: 530px;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+
+    .academic-table th,
+    .academic-table td {
+      padding: 8px 10px;
+      border: 1px solid #aeb7c1;
+      text-align: center;
+    }
+
+    .academic-table th {
+      background: #f2f6fc;
+      font-weight: 600;
+    }
+
+    /* Hasil klasifikasi */
+    .result-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      max-width: 530px;
+      padding: 12px;
+      background: #eef5ff;
+      border-radius: 18px;
+    }
+
+    .result-box__icon {
+      flex-shrink: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .result-box__content {
+      flex: 1;
+    }
+
+    .result-box__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 8px;
+      font-size: 12px;
+      color: #159c50;
+    }
+
+    .result-box__description {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .badge-final {
+      padding: 4px 15px;
+      background: #32c65b;
+      color: #fff;
+      font-size: 10px;
+      border-radius: 3px;
+    }
+
+    /* Probabilitas */
+    .prob-section {
+      margin-top: 18px;
+    }
+
+    .probability-list {
+      width: 100%;
+      max-width: 530px;
+      padding: 12px;
+      background: #eef5ff;
+      border-radius: 18px;
+      list-style: none;
+    }
+
+    .probability-row {
+      display: grid;
+      grid-template-columns: 12px 60px minmax(70px, 1fr) 48px;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+
+    .probability-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .probability-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot-low {
+      background: #2dc65c;
+    }
+
+    .dot-mid {
+      background: #ffcc00;
+    }
+
+    .dot-high {
+      background: #ff4141;
+    }
+
+    .probability-bar {
+      height: 15px;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 20px;
+    }
+
+    .probability-fill {
+      height: 100%;
+      width: var(--value);
+      border-radius: 20px;
+    }
+
+    .fill-low {
+      background: #32c65b;
+    }
+
+    .fill-mid {
+      background: #ffca05;
+    }
+
+    .fill-high {
+      background: #ff4141;
+    }
+
+    .probability-value {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 650px) {
+      .student-detail {
+        grid-template-columns: 35px 1fr;
+      }
+
+      .student-detail__status {
+        grid-column: 2;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .academic-table {
+        min-width: 450px;
+      }
+
+      .probability-row {
+        grid-template-columns: 12px 55px minmax(50px, 1fr) 45px;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ICON -->
+  <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+
+    <symbol id="i-arrow-left" viewBox="0 0 24 24">
+      <path d="M19 12H5M11 6l-6 6 6 6" />
+    </symbol>
+
+    <symbol id="i-cap" viewBox="0 0 24 24">
+      <path d="m2 9 10-5 10 5-10 5z" />
+      <path d="M6 11.500V16c0 1.500 3 3 6 3s6-1.500 6-3v-4.500M22 9v6" />
+    </symbol>
+
+    <symbol id="i-file-text" viewBox="0 0 24 24">
+      <path d="M6 3h8l5 5v13H6z" />
+      <path d="M14 3v5h5M9 13h6M9 17h6" />
+    </symbol>
+
+    <symbol id="i-home" viewBox="0 0 24 24">
+      <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+    </symbol>
+
+    <symbol id="i-log-out" viewBox="0 0 24 24">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+    </symbol>
+
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </symbol>
+
+    <symbol id="i-shield-check" viewBox="0 0 24 24">
+      <path d="M12 3 4 6v6c0 5 3.500 8 8 9 4.500-1 8-4 8-9V6z" />
+      <path d="m9 12 2 2 4-4" />
+    </symbol>
+
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+    </symbol>
+
+    <symbol id="i-user-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="10" r="3.5" />
+      <path d="M5.5 19c1.5-3 4-4 6.5-4s5 1 6.5 4" />
+    </symbol>
+
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3.5" />
+      <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+      <path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.5.7 4 2.5 4 5.5" />
+    </symbol>
+
+  </svg>
+
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+  <div class="app" data-app>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar" aria-label="Menu utama">
+
+      <a class="brand" href="beranda.html">
+        <span class="brand__logo">
+          <svg class="icon"><use href="#i-cap" /></svg>
+        </span>
+
+        <span class="brand__text">
+          <span class="brand__name">SIPMA</span>
+          <span class="brand__sub">Dosen PA</span>
+        </span>
+      </a>
+
+      <nav class="sidebar__nav" aria-label="Navigasi Dosen PA">
+
+        <ul class="sidebar__list">
+
+          <li>
+            <a class="sidebar__link" href="beranda.html">
+              <svg class="icon"><use href="#i-home" /></svg>
+              <span>Beranda</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar__link sidebar__link--active"
+               href="mahasiswa-bimbingan.html">
+              <svg class="icon"><use href="#i-users" /></svg>
+              <span>Mahasiswa Bimbingan</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar__link" href="tindak-lanjut.html">
+              <svg class="icon"><use href="#i-file-text" /></svg>
+              <span>Tindak Lanjut</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="sidebar__link" href="profil.html">
+              <svg class="icon"><use href="#i-user" /></svg>
+              <span>Profil Saya</span>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <a class="sidebar__link sidebar__logout" href="../index.html">
+        <svg class="icon"><use href="#i-log-out" /></svg>
+        <span>Keluar</span>
+      </a>
+
+    </aside>
+
+    <div class="app__backdrop" data-sidebar-toggle></div>
+
+    <div class="app__main">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+
+        <button
+          class="topbar__toggle"
+          type="button"
+          data-sidebar-toggle
+          aria-controls="sidebar"
+          aria-expanded="true"
+          aria-label="Tampilkan atau sembunyikan menu">
+
+          <svg class="icon"><use href="#i-menu" /></svg>
+
+        </button>
+
+        <div class="topbar__user">
+
+          <span class="avatar">
+            <svg class="icon"><use href="#i-user-circle" /></svg>
+          </span>
+
+          <p class="topbar__identity">
+            <span class="topbar__name">Dr. Siti Rahayu, M.Pd.</span>
+            <span class="topbar__role">Dosen Penasehat Akademik</span>
+          </p>
+
+        </div>
+
+      </header>
+
+      <!-- KONTEN DETAIL -->
+      <main class="content" id="konten">
+
+        <a class="detail-back" href="mahasiswa-bimbingan.html">
+          <svg class="icon"><use href="#i-arrow-left" /></svg>
+          Kembali
+        </a>
+
+        <header class="page-header">
+          <h1 class="page-header__title">Detail Mahasiswa</h1>
         </header>
 
-        <!-- ===== KONTEN UTAMA HALAMAN ===== -->
-        <main class="content" id="konten">
-          <a class="link" href="mahasiswa-bimbingan.html">
-            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left" /></svg>
-            Kembali
-          </a>
-          <header class="page-header">
-            <h1 class="page-header__title">Detail Mahasiswa</h1>
-            <p class="page-header__desc">Informasi lengkap mahasiswa bimbingan</p>
-          </header>
-          <section class="card card--tint" aria-label="Identitas mahasiswa">
-            <div class="person">
-              <span class="avatar">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-user-circle" /></svg>
-              </span>
-              <div>
-                <p class="person__name">Ahmad Rizki</p>
-                <p class="text-muted">NPM 2311234567</p>
-                <p class="text-muted">Program Studi : Informatika · Semester : 6</p>
-              </div>
-              <div class="stack person__aside">
-                <span class="badge badge--low">Risiko Rendah</span>
-                <span class="badge badge--ok">Terverifikasi</span>
-              </div>
-            </div>
-          </section>
-          <section class="card" aria-labelledby="judul-akademik">
-            <h2 class="card__title" id="judul-akademik">Data Akademik Terakhir</h2>
+        <!-- IDENTITAS MAHASISWA -->
+        <section class="student-detail" aria-label="Identitas mahasiswa">
 
-            <div class="table-wrap">
-              <table class="table">
-                <caption class="sr-only">Data akademik terakhir</caption>
-                <thead>
-                  <tr>
-                    <th scope="col" class="cell-center">IPK</th>
-                    <th scope="col" class="cell-center">IPS Terakhir</th>
-                    <th scope="col" class="cell-center">SKS Lulus</th>
-                    <th scope="col" class="cell-center">Mata Kuliah Mengulang</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="cell-center">3.12</td>
-                    <td class="cell-center">3.50</td>
-                    <td class="cell-center">96</td>
-                    <td class="cell-center">2</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-          <div class="grid-2">
-            <section class="card" aria-labelledby="judul-hasil">
-              <h2 class="card__title" id="judul-hasil">Hasil Klasifikasi Risiko</h2>
+          <span class="student-detail__avatar">
+            <svg class="icon"><use href="#i-user-circle" /></svg>
+          </span>
 
-              <div class="result">
-                <span class="result__icon">
-                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield-check" /></svg>
-                </span>
-                <div class="result__body">
-                  <p class="result__title">
-                    Risiko Rendah
-                    <span class="badge badge--final">Final</span>
-                  </p>
-                  <p>Berdasarkan hasil klasifikasi data akademik pada semester terakhir</p>
-                </div>
-              </div>
-            </section>
-            <section class="card" aria-labelledby="judul-prob">
-              <h2 class="card__title" id="judul-prob">Probabilitas Setiap Kelas</h2>
+          <div class="student-detail__identity">
 
-              <ul class="prob" aria-label="Probabilitas setiap kelas risiko">
-                <li class="prob__row">
-                  <span class="dot dot--low" aria-hidden="true"></span>
-                  <span class="prob__name">Rendah</span>
-                  <span class="prob__bar" style="--value: 70.4%" aria-hidden="true"></span>
-                  <span class="prob__value">70.4%</span>
-                </li>
-                <li class="prob__row">
-                  <span class="dot dot--mid" aria-hidden="true"></span>
-                  <span class="prob__name">Sedang</span>
-                  <span class="prob__bar prob__bar--mid" style="--value: 21.4%" aria-hidden="true"></span>
-                  <span class="prob__value">21.4%</span>
-                </li>
-                <li class="prob__row">
-                  <span class="dot dot--high" aria-hidden="true"></span>
-                  <span class="prob__name">Tinggi</span>
-                  <span class="prob__bar prob__bar--high" style="--value: 8%" aria-hidden="true"></span>
-                  <span class="prob__value">8.0%</span>
-                </li>
-              </ul>
-            </section>
+            <strong id="detailNama">-</strong>
+
+            <p id="detailNpm">NPM: -</p>
+
+            <p class="student-program">
+              Program Studi : Informatika
+            </p>
+
+            <p>
+              Semester : <span id="detailSemester">-</span>
+            </p>
+
           </div>
-        </main>
-      </div>
+
+          <div class="student-detail__status">
+
+            <span class="badge badge--low" id="badgeRisiko">
+              Risiko Rendah
+            </span>
+
+            <span class="badge badge--ok" id="badgeVerifikasi">
+              <svg class="icon"><use href="#i-shield-check" /></svg>
+              Terverifikasi
+            </span>
+
+          </div>
+
+        </section>
+
+        <!-- DATA AKADEMIK TERAKHIR -->
+        <section class="academic-section" aria-labelledby="judul-akademik">
+
+          <h2 class="card__title" id="judul-akademik">
+            Data Akademik Terakhir
+          </h2>
+
+          <div class="table-wrap">
+
+            <table class="academic-table">
+
+              <thead>
+                <tr>
+                  <th>IPK</th>
+                  <th>IPS Terakhir</th>
+                  <th>SKS Lulus</th>
+                  <th>Mata Kuliah Mengulang</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td id="detailIPK">-</td>
+                  <td id="detailIPS">-</td>
+                  <td id="detailSKS">-</td>
+                  <td id="detailMengulang">-</td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </section>
+
+        <!-- HASIL KLASIFIKASI -->
+        <section class="result-section" aria-labelledby="judul-hasil">
+
+          <h2 class="card__title" id="judul-hasil">
+            Hasil Klasifikasi Risiko
+          </h2>
+
+          <div class="result-box">
+
+            <span class="result-box__icon">
+              <svg class="icon"><use href="#i-shield-check" /></svg>
+            </span>
+
+            <div class="result-box__content">
+
+              <p class="result-box__title">
+                <span id="hasilRisiko">Risiko Rendah</span>
+                <span class="badge-final" id="statusFinal">Final</span>
+              </p>
+
+              <p class="result-box__description">
+                Berdasarkan hasil klasifikasi data akademik pada semester terakhir
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- PROBABILITAS -->
+        <section class="prob-section" aria-labelledby="judul-prob">
+
+          <h2 class="card__title" id="judul-prob">
+            Probabilitas Setiap Kelas
+          </h2>
+
+          <ul class="probability-list">
+
+            <li class="probability-row">
+
+              <span class="probability-dot dot-low"></span>
+
+              <span>Rendah</span>
+
+              <div class="probability-bar">
+                <div class="probability-fill fill-low" id="barRendah"></div>
+              </div>
+
+              <span class="probability-value" id="nilaiRendah">70.4%</span>
+
+            </li>
+
+            <li class="probability-row">
+
+              <span class="probability-dot dot-mid"></span>
+
+              <span>Sedang</span>
+
+              <div class="probability-bar">
+                <div class="probability-fill fill-mid" id="barSedang"></div>
+              </div>
+
+              <span class="probability-value" id="nilaiSedang">21.4%</span>
+
+            </li>
+
+            <li class="probability-row">
+
+              <span class="probability-dot dot-high"></span>
+
+              <span>Tinggi</span>
+
+              <div class="probability-bar">
+                <div class="probability-fill fill-high" id="barTinggi"></div>
+              </div>
+
+              <span class="probability-value" id="nilaiTinggi">8.2%</span>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </main>
+
     </div>
 
-    <!-- ===== MODAL / POP-UP ===== -->
+  </div>
 
-    <script src="../js/app.js"></script>
-  </body>
+  <script src="../js/app.js"></script>
+
+  <script>
+    // DATA MAHASISWA BERDASARKAN NPM
+    // Angka IPS dan probabilitas di bawah merupakan data contoh.
+
+    const dataMahasiswa = {
+
+      "2311234567": {
+        nama: "Ahmad Rizki",
+        semester: 6,
+        ipk: "3.12",
+        ips: "3.50",
+        sks: 96,
+        mengulang: 2,
+        risiko: "Rendah",
+        rendah: 70.4,
+        sedang: 21.4,
+        tinggi: 8.2
+      },
+
+      "2311234569": {
+        nama: "Andi Pratama",
+        semester: 6,
+        ipk: "3.32",
+        ips: "3.60",
+        sks: 96,
+        mengulang: 0,
+        risiko: "Rendah",
+        rendah: 75.0,
+        sedang: 18.0,
+        tinggi: 7.0
+      },
+
+      "2311234568": {
+        nama: "Siti Nurhaliza",
+        semester: 6,
+        ipk: "3.10",
+        ips: "3.20",
+        sks: 88,
+        mengulang: 1,
+        risiko: "Sedang",
+        rendah: 20.0,
+        sedang: 65.0,
+        tinggi: 15.0
+      },
+
+      "2311234570": {
+        nama: "Budi Santoso",
+        semester: 6,
+        ipk: "3.12",
+        ips: "3.50",
+        sks: 96,
+        mengulang: 2,
+        risiko: "Rendah",
+        rendah: 70.4,
+        sedang: 21.4,
+        tinggi: 8.2
+      },
+
+      "2311234571": {
+        nama: "Rina Wulandari",
+        semester: 6,
+        ipk: "3.40",
+        ips: "3.65",
+        sks: 90,
+        mengulang: 1,
+        risiko: "Rendah",
+        rendah: 80.0,
+        sedang: 15.0,
+        tinggi: 5.0
+      },
+
+      "2311234572": {
+        nama: "Fajar Nugroho",
+        semester: 6,
+        ipk: "3.05",
+        ips: "3.30",
+        sks: 84,
+        mengulang: 1,
+        risiko: "Rendah",
+        rendah: 72.0,
+        sedang: 20.0,
+        tinggi: 8.0
+      },
+
+      "2311234573": {
+        nama: "Linda Sari",
+        semester: 6,
+        ipk: "2.75",
+        ips: "2.60",
+        sks: 78,
+        mengulang: 3,
+        risiko: "Tinggi",
+        rendah: 8.0,
+        sedang: 22.0,
+        tinggi: 70.0
+      },
+
+      "2311234574": {
+        nama: "Dimas Arifin",
+        semester: 6,
+        ipk: "3.12",
+        ips: "3.00",
+        sks: 88,
+        mengulang: 1,
+        risiko: "Sedang",
+        rendah: 25.0,
+        sedang: 60.0,
+        tinggi: 15.0
+      }
+
+    };
+
+    // MENGAMBIL NPM DARI URL
+    const parameterURL = new URLSearchParams(window.location.search);
+    const npmDipilih = parameterURL.get("npm");
+
+    // MENCARI DATA BERDASARKAN NPM
+    const mahasiswa = dataMahasiswa[npmDipilih];
+
+    // MENAMPILKAN DATA MAHASISWA
+    if (mahasiswa) {
+
+      document.getElementById("detailNama").textContent = mahasiswa.nama;
+
+      document.getElementById("detailNpm").textContent =
+        "NPM " + npmDipilih;
+
+      document.getElementById("detailSemester").textContent =
+        mahasiswa.semester;
+
+      document.getElementById("detailIPK").textContent =
+        mahasiswa.ipk;
+
+      document.getElementById("detailIPS").textContent =
+        mahasiswa.ips;
+
+      document.getElementById("detailSKS").textContent =
+        mahasiswa.sks;
+
+      document.getElementById("detailMengulang").textContent =
+        mahasiswa.mengulang;
+
+      document.getElementById("hasilRisiko").textContent =
+        "Risiko " + mahasiswa.risiko;
+
+      document.getElementById("badgeRisiko").textContent =
+        "Risiko " + mahasiswa.risiko;
+
+      // Mengatur warna berdasarkan tingkat risiko
+      const badgeRisiko = document.getElementById("badgeRisiko");
+
+      badgeRisiko.classList.remove(
+        "badge--low",
+        "badge--mid",
+        "badge--high"
+      );
+
+      if (mahasiswa.risiko === "Rendah") {
+        badgeRisiko.classList.add("badge--low");
+      } else if (mahasiswa.risiko === "Sedang") {
+        badgeRisiko.classList.add("badge--mid");
+      } else {
+        badgeRisiko.classList.add("badge--high");
+      }
+
+      // Mengatur nilai probabilitas
+      document.getElementById("nilaiRendah").textContent =
+        mahasiswa.rendah.toFixed(1) + "%";
+
+      document.getElementById("nilaiSedang").textContent =
+        mahasiswa.sedang.toFixed(1) + "%";
+
+      document.getElementById("nilaiTinggi").textContent =
+        mahasiswa.tinggi.toFixed(1) + "%";
+
+      // Mengatur panjang grafik probabilitas
+      document.getElementById("barRendah").style.width =
+        mahasiswa.rendah + "%";
+
+      document.getElementById("barSedang").style.width =
+        mahasiswa.sedang + "%";
+
+      document.getElementById("barTinggi").style.width =
+        mahasiswa.tinggi + "%";
+
+    } else {
+
+      document.getElementById("detailNama").textContent =
+        "Mahasiswa tidak ditemukan";
+
+      document.getElementById("detailNpm").textContent =
+        "NPM: " + (npmDipilih || "Tidak tersedia");
+
+      document.getElementById("badgeRisiko").textContent =
+        "Data tidak tersedia";
+
+      document.getElementById("hasilRisiko").textContent =
+        "Data mahasiswa tidak ditemukan";
+
+      document.getElementById("statusFinal").textContent =
+        "Tidak tersedia";
+
+    }
+  </script>
+
+</body>
 </html>
