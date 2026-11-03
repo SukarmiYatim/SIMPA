@@ -1,3 +1,4 @@
+
 /* =====================================================================
    pages.css — BAGIAN KHUSUS HALAMAN TERTENTU
    Hanya berisi hal yang tidak dipakai ulang di banyak tempat:
@@ -777,4 +778,38 @@
   .reset-modal__heading p {
     font-size: 14px;
   }
+<<<<<<< HEAD
+=======
+}
+
+/* Mengatur panjang pencarian dan program studi */
+.toolbar {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  align-items: center;
+}
+
+.toolbar .search {
+  flex: 1;
+  min-width: 0;
+}
+
+.toolbar .search .input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.toolbar .select-wrap {
+  flex: 0 0 260px;
+  min-width: 0;
+}
+
+.toolbar .select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-align: center;
+>>>>>>> c17814f44fd83d6fb0e794bb93e1a299f8ccf6d8
 }
