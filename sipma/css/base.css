@@ -1,3 +1,4 @@
+
 /* =====================================================================
    base.css — FONDASI
    Isi: (1) design tokens  (2) reset  (3) tipografi  (4) utilitas dasar
@@ -8,40 +9,40 @@
 
 /* ---------- 1. DESIGN TOKENS ---------- */
 :root {
-  /* Font: Inter (font bawaan Figma, dirancang khusus untuk antarmuka layar) */
+  /* Font: Inter */
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
-  /* Skala ukuran font (rem; 1rem = 16px) */
-  --fs-xs: 0.75rem;   /* 12px — keterangan kecil, badge, label tabel   */
-  --fs-sm: 0.875rem;  /* 14px — teks isi / body, tabel, form           */
-  --fs-md: 1rem;      /* 16px — h3, judul kartu kecil                  */
-  --fs-lg: 1.125rem;  /* 18px — h2, judul kartu / seksi                */
-  --fs-xl: 1.5rem;    /* 24px — h1, judul halaman                      */
-  --fs-2xl: 2rem;     /* 32px — angka besar pada kartu statistik       */
+  /* Skala ukuran font (pixel) */
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 24px;
+  --fs-2xl: 32px;
 
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
 
-  --lh-tight: 1.3;    /* heading */
-  --lh-base: 1.55;    /* teks isi */
+  --lh-tight: 1.3;
+  --lh-base: 1.55;
 
   /* Warna dasar */
-  --navy: #0f2a47;          /* sidebar, header login */
+  --navy: #0f2a47;
   --navy-hover: #1a3d63;
-  --blue: #1473e6;          /* menu aktif, tab aktif, link */
-  --blue-primary: #2563eb;  /* tombol utama */
+  --blue: #1473e6;
+  --blue-primary: #2563eb;
   --blue-primary-hover: #1d4fd8;
-  --bg-page: #eef4fd;       /* latar area konten */
-  --surface: #ffffff;       /* kartu */
-  --surface-tint: #e6eefb;  /* kartu bernuansa biru muda */
-  --ink: #0f172a;           /* teks utama */
-  --muted: #556176;         /* teks sekunder */
-  --line: #d3dcea;          /* garis & border */
-  --gray-btn: #b8bfc9;      /* tombol Batal / Kembali */
+  --bg-page: #eef4fd;
+  --surface: #ffffff;
+  --surface-tint: #e6eefb;
+  --ink: #0f172a;
+  --muted: #556176;
+  --line: #d3dcea;
+  --gray-btn: #b8bfc9;
 
-  /* Warna status risiko (dipakai konsisten di badge, donut, grafik, bar) */
+  /* Warna status risiko */
   --risk-low: #22c55e;
   --risk-low-soft: #dcfce7;
   --risk-low-ink: #166534;
@@ -52,13 +53,13 @@
   --risk-high-soft: #fee2e2;
   --risk-high-ink: #991b1b;
 
-  /* Spasi (kelipatan 4px) */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
+  /* Spasi (pixel) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
 
   /* Bentuk & bayangan */
   --radius-sm: 6px;
@@ -66,7 +67,7 @@
   --radius-lg: 16px;
   --shadow-card: 0 1px 2px rgb(15 42 71 / 8%), 0 2px 8px rgb(15 42 71 / 6%);
 
-  --sidebar-w: 15rem;
+  --sidebar-w: 240px;
 }
 
 /* ---------- 2. RESET ---------- */
@@ -129,10 +130,7 @@ ol {
   list-style: none;
 }
 
-/* ---------- 3. TIPOGRAFI: hierarki heading ----------
-   h1 = judul halaman (satu per halaman)
-   h2 = judul kartu / seksi
-   h3 = sub-judul di dalam kartu                                   */
+/* ---------- 3. TIPOGRAFI ---------- */
 h1,
 h2,
 h3 {
@@ -143,7 +141,7 @@ h3 {
 h1 {
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.16px;
 }
 
 h2 {
@@ -177,7 +175,7 @@ small,
 
 .skip-link {
   position: absolute;
-  top: -4rem;
+  top: -64px;
   left: var(--space-4);
   z-index: 100;
   padding: var(--space-2) var(--space-4);
@@ -195,7 +193,7 @@ small,
   outline-offset: 2px;
 }
 
-/* Sprite ikon SVG (disisipkan di awal tiap halaman, tidak terlihat) */
+/* Sprite ikon SVG */
 .sprite {
   position: absolute;
   width: 0;
@@ -215,13 +213,13 @@ small,
 }
 
 .icon--lg {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 36px;
+  height: 36px;
 }
 
 .icon--xl {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 56px;
+  height: 56px;
 }
 
 [hidden] {

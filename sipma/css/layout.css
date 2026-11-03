@@ -1,23 +1,46 @@
+
 /* =====================================================================
    layout.css — KERANGKA HALAMAN
-   Isi: (1) app shell: sidebar + topbar + konten  (2) grid konten
+   Isi: (1) app shell: sidebar + topbar + konten
+        (2) grid konten
         (3) responsif
    Teknik: CSS Grid untuk kerangka utama, Flexbox untuk isi sidebar,
            topbar, dan toolbar.
    ===================================================================== */
 
+/* ---------- FONT GLOBAL ---------- */
+.app,
+.auth-register {
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.app button,
+.app input,
+.app select,
+.app textarea,
+.auth-register button,
+.auth-register input,
+.auth-register select,
+.auth-register textarea {
+  font-family: inherit;
+}
+
 /* ---------- 1. APP SHELL ----------
-   Dua kolom: [sidebar tetap] [area utama fleksibel]                 */
+   Dua kolom: [sidebar tetap] [area utama fleksibel] */
+
+/* APP */
 .app {
   display: grid;
-  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
-  min-height: 100vh;
+  grid-template-columns: 260px minmax(0, 1fr);
+  width: 1440px;
+  min-height: 1024px;
+  margin: auto;
 }
 
 .app__main {
   display: flex;
   flex-direction: column;
-  min-width: 0; /* mencegah tabel lebar melebarkan seluruh halaman */
+  min-width: 0;
 }
 
 .app__backdrop {
@@ -39,7 +62,7 @@
   top: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 900px;
   color: #fff;
   background: var(--navy);
 }
@@ -54,16 +77,16 @@
 .brand__logo {
   display: grid;
   place-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 48px;
+  height: 48px;
   color: var(--navy);
   background: #fff;
   border-radius: var(--radius-sm);
 }
 
 .brand__logo .icon {
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
 }
 
 .brand__text {
@@ -75,7 +98,7 @@
 .brand__name {
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.64px;
 }
 
 .brand__sub {
@@ -108,8 +131,8 @@
 }
 
 .sidebar__link .icon {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 28px;
+  height: 28px;
 }
 
 .sidebar__link:hover {
@@ -139,8 +162,8 @@
 .topbar__toggle {
   display: grid;
   place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   background: none;
   border: 0;
   border-radius: var(--radius-sm);
@@ -151,8 +174,8 @@
 }
 
 .topbar__toggle .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
 }
 
 .topbar__user {
@@ -198,14 +221,15 @@
 }
 
 /* ---------- 2. GRID KONTEN ---------- */
-/* Deretan kartu statistik: otomatis menyesuaikan lebar layar */
+
+/* Deretan kartu statistik */
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
   gap: var(--space-4);
 }
 
-/* Dua kolom sama lebar (turun jadi satu kolom di layar kecil) */
+/* Dua kolom sama lebar */
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -234,17 +258,14 @@
 }
 
 /* ---------- 3. RESPONSIF ---------- */
-@media (width <= 56.25em) {
-  /* Tablet/HP: sidebar menjadi panel geser di atas konten */
-  .app {
-    grid-template-columns: minmax(0, 1fr);
-  }
+@media (width <= 900px) {
 
+  
   .sidebar {
     position: fixed;
     inset: 0 auto 0 0;
     z-index: 50;
-    width: min(var(--sidebar-w), 85vw);
+    width: min(var(--sidebar-w), 765px);
     transform: translateX(-100%);
     transition: transform 0.2s;
   }
@@ -277,11 +298,10 @@
 }
 
 /* ---------- LAYOUT HALAMAN DAFTAR AKUN ---------- */
-
 .auth-register {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 900px;
   background: var(--surface);
 }
 
@@ -294,7 +314,7 @@
 }
 
 .auth-register .login__card--register {
-  width: min(100%, 31rem);
+  width: min(100%, 496px);
   min-height: auto;
   padding: var(--space-6);
   margin: auto;

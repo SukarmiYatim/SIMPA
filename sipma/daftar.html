@@ -33,8 +33,21 @@
           <label class="field__label" for="npm-nidn">
             NPM/NIDN
           </label>
-          <input class="input" type="text" id="npm-nidn"
-            name="npm_nidn" required>
+
+        <input
+          class="input"
+          type="text"
+          id="npm-nidn"
+          name="npm_nidn"
+          placeholder="Masukkan NPM atau NIDN"
+          maxlength="15"
+          inputmode="numeric"
+          pattern="[0-9]+"
+          required
+        >
+
+        <small id="role-info" style="color: #64748b;">
+        </small>
         </div>
 
         <div class="field">
